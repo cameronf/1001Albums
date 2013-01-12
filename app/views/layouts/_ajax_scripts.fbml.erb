@@ -1,0 +1,21 @@
+function do_ajax_stats_to_albums(my_id, chosen_id) {
+	var submitForm = document.createElement('form');
+	submitForm.setMethod('POST');
+	submitForm.setId('foo_id');
+	submitForm.setName('foo_name');
+
+	var newElement = document.createElement('input');
+	newElement.setType('hidden');
+	newElement.setName('fb_other_in');
+	newElement.setValue(chosen_id);
+	submitForm.appendChild(newElement);
+
+	if (chosen_id == my_id) {
+		submitForm.setAction('<%=$FB_APP_ROOT%>/showmyalbumstab');
+	}
+	else {
+		submitForm.setAction('<%=$FB_APP_ROOT%>/showothersalbumstab');
+	}
+	document.getElementById('hidden_form').appendChild(submitForm);
+	submitForm.submit();
+}

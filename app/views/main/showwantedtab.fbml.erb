@@ -1,0 +1,8 @@
+<%= render :partial => "header" %>
+
+<div class="tabheader">
+<br>
+<h1><%= fb_name(@fb_user, :useyou => :false, :firstnameonly => :true, :possessive => :true) %> Wanted List</h1>
+</div>
+
+<fb:iframe src="<%=$APP_ROOT%>iframewantedtab" width="755" height="510" frameborder="0" scrolling="no"> </fb:iframe>

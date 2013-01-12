@@ -1,0 +1,103 @@
+<% for detail in details %>
+<div class="album_details">
+	<div class="album_image">
+		<%= build_image_link(detail.album) %>
+	</div>
+	<div class="artist">
+		<%=h detail.album.artist %>
+	</div>
+	<div class="title">
+		<%=h detail.album.title %> (<%=h detail.album.year %>)
+                <% if detail.album.delta %>
+                  <div style="position: absolute; height: 12px; width: 228px; top: 38px; text-align: right; vertical-align: bottom; font-size: 75%;"><i>(<%=h detail.album.delta %>)</i></div>
+                <% end %>
+	</div>
+	<span id="user_details_<%=h detail.album_id%>">
+		<div class="album_data">
+    	<ul class='set-heard'>
+      	<span id='heard_<%=detail.album_id%>'>
+					<li class='current-heard-<%=detail.heard_id.to_s%>'></li>
+ 					<li>    
+						<%= fast_ltr_details('Heard It','heard',1,detail.album_id) %>
+ 					</li>         
+      	</span>
+    	</ul>
+    	<ul class='set-owned'>
+      	<span id='owned_<%=detail.album_id%>'>
+ 					<li class='current-owned-<%=detail.owned_id.to_s%>'></li>
+ 					<li>    
+						<%= fast_ltr_details('Not Going To Buy','owned',1,detail.album_id) %>
+    			</li>       
+    			<li>          
+						<%= fast_ltr_details('Own It','owned',2,detail.album_id) %>
+    			</li>         
+      	</span>
+    	</ul>
+    	<ul class='set-format'>
+      	<span id='format_<%=detail.album_id%>'>
+    			<li class='current-format-<%=detail.format_id.to_s%>'></li>
+    			<li>    
+						<%= fast_ltr_details('Vinyl','format',1,detail.album_id) %>
+    			</li>       
+    			<li>          
+						<%= fast_ltr_details('CD','format',2,detail.album_id) %>
+    			</li>         
+    			<li>        
+						<%= fast_ltr_details('mp3','format',3,detail.album_id) %>
+    			</li>         
+      	</span>
+    	</ul>
+    	<ul class='set-rating'>
+      	<span id='rating_<%=detail.album_id%>'>
+  				<li class='current-rating-<%=detail.rating.to_s%>'></li>
+   				<li>    
+						<%= fast_ltr_details('Not A Fan','rating',1,detail.album_id) %>
+   				</li>       
+   				<li>          
+						<%= fast_ltr_details('It\'s Fine','rating',2,detail.album_id) %>
+   				</li>         
+   				<li>        
+						<%= fast_ltr_details('Like It','rating',3,detail.album_id) %>
+					</li>
+   				<li>        
+						<%= fast_ltr_details('Love It','rating',4,detail.album_id) %>
+					</li>
+      	</span>
+    	</ul>
+  	</div>
+		<div class="album_notes">
+			<textarea id="notes_<%=detail.album_id%>"
+								name="notes_<%=detail.album_id%>" 
+								class="note_text"
+								ROWS="5" COLS="20" 
+								onClick="do_js_click_highlight_note(<%=detail.album_id%>);"
+								onFocus="do_js_focus_highlight_note(<%=detail.album_id%>);"
+								onChange="do_js_set_note(<%=detail.album_id%>);"
+			><%=h detail.notes.nil? ? "Enter Note" : detail.notes %></textarea>
+ 		</div>
+	</span>
+	<div class="clear_details">
+		<ul class="clear_button">
+			<li>
+				<%= fast_ltr_clear(detail.album_id) %>
+			</li>
+		</ul>
+	</div>
+	<div class="buy_links">
+		<% if detail.album.asin != '' %>
+		<ul class="amazon_link">
+			<li>
+				<%= build_amazon_link(detail.album.asin) %>
+			</li>
+		</ul>
+		<% end %>
+		<% if detail.album.apple_id != 'NULL' %>
+		<ul class="apple_link">
+			<li>
+				<%= build_apple_link(detail.album.apple_id) %>
+			</li>
+		</ul>
+		<% end %>
+	</div>
+</div>
+<% end %>

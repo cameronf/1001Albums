@@ -1,0 +1,46 @@
+<div id="print_and_filter" class="print_and_filter">
+	<div id="print_wanted_text" class="print_wanted_text">
+		<a href="javascript:void(0)" onClick="do_js_create_printable_list(session_id);">Create Printable List</a>
+		<a href="javascript:void(0)" onClick="do_js_create_mobile_list(session_id);">Create Mobile List</a>
+	</div>
+	<div id="show_filter_text" class="show_filter_text">
+		<a href="javascript:void(0)" onClick="Element.hide('show_filter_text');Element.show('hide_filter_text');Element.show('show_filter_controls')">Advanced Filters</a>
+	</div>
+	<div id="hide_filter_text" class="hide_filter_text" style="display:none">
+		<a href="javascript:void(0)" onClick="Element.hide('show_filter_controls');Element.show('show_filter_text');Element.hide('hide_filter_text');">Hide Filters</a><br>
+	</div>
+</div>
+
+<div id="show_filter_controls" class="show_filter_controls" style="display:none">
+<div class="filter_sort">
+Sort By:
+  <select name="sort_by" id="sort_by_select" onChange="do_js_get_sorted_albums(this.value,'wanted_albums')">
+    <option value="0" selected>Year</option>
+		<option value="1">Artist</option>
+    <option value="2">Rating</option>
+  </select>
+</div>
+
+<div class="filter_wanted">
+Want:
+	<select name="wanted_type" id="wanted_type" onChange="do_js_get_wanted_albums(this.value,'wanted_albums')">
+		<option value="owned" selected>To Buy</option>
+		<option value="heard">To Hear</option>
+	</select>
+</div>
+
+<div class="filter_by">
+Filter By:
+  <select name="filter_by" id="filter_by_select" onChange="do_js_populate_filters(this.value, 'wanted_albums')" >
+    <option value="0" selected>No Filter</option>
+    <option value="1">Year</option>
+    <option value="2">Artist</option>
+  </select>
+</div>
+
+<div id="filter_details" class="filter_details">
+</div>
+<div id="filter_go" class="filter_go" style="display:none">
+<input class="go_button" type="button" value="Go" onClick="do_js_get_filtered_albums('wanted_albums')"/>
+</div>
+</div>

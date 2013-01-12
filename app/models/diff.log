@@ -1,0 +1,56 @@
+27c27
+< 	def self.getwanteddetails(user)
+---
+> 	def self.getwanteddetails(user,page)
+63,64c63,108
+< 		self.find :all,
+< 							:conditions => conditions,
+---
+> 		paginate  :per_page => 150, :page => page,
+> 					 		:conditions => conditions,
+> 					 		:order => $SORT_KEY[sort_by],
+> 						  :include => :album
+> 				
+> 
+> 	end
+> 
+> 	def self.getprinteddetails(user)
+> 		user_id = user.id
+> 		sort_by = user.state[:sort_by].to_i
+> 		wanted_type = user.state[:wanted_type]
+> 		filter_by = user.state[:filter_by].to_i
+> 		filter_details_1 = user.state[:filter_details_1]
+> 		filter_details_2 = user.state[:filter_details_2]
+> 
+> 		if filter_by == 0 || filter_details_1.to_i == -1
+> 			conditions = "user_id = #{user_id}"
+> 		else
+> 			case filter_by
+> 				# Filter by YEAR
+> 				when 1
+> 					lower_year = filter_details_1.to_i
+> 					upper_year = filter_details_2.to_i
+> 					if (lower_year > upper_year)
+> 						lower_year,upper_year = upper_year,lower_year
+> 					end
+> 
+> 					logger.debug ("Upper = " + upper_year.to_s)
+> 
+> 					conditions = "user_id = #{user_id} and albums.year >= #{lower_year} and albums.year <= #{upper_year}"
+> 				# Filter by Artist
+> 				when 2
+> 					logger.debug("filter details = " + filter_details_1)
+> 					if filter_details_1 == 'NUM'
+> 						conditions = "user_id = #{user_id} and albums.sortname NOT REGEXP '^[[:alpha:]]'"
+> 					else	
+> 						conditions = "user_id = #{user_id} and albums.sortname LIKE '#{filter_details_1}%'"
+> 					end
+> 			end
+> 		end
+> 
+> 		conditions = conditions + " AND details.#{wanted_type}_id = 0"
+> 
+> 		self.find	:all,
+> 					 		:conditions => conditions,
+66a111
+> 				

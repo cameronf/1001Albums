@@ -1,0 +1,7 @@
+<div class="paginateheader">
+  <%= will_paginate @details, :inner_window => 10, :page => @cur_page, :remote => true, :album_div => "wanted_albums" %>
+</div>
+
+<div class="scrolling_albums">
+		<%= render(:partial => "/main/wanted_albums_detail", :locals => {:detail => @details}) %>
+</div>

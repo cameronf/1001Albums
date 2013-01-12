@@ -1,0 +1,16 @@
+<%= render(:partial => "common_header") %>
+<body onload="do_js_set_state('<%=@user.session_id%>');do_js_get_paged_albums(1,'my_albums');">
+
+<div id="progress_dialog" class="progress_dialog">
+<span class="pd_text">
+Loading <img class="pd_image" src="<%=$APP_ROOT%>images/progress.gif" />
+</span>
+</div>
+
+<div id="loaded_frame" style="display:none" class="loaded_display">
+<%= render(:partial => "my_albums_filters") %>
+<div id="my_albums" class="albums_display">
+</div>
+</div>
+<%= render(:partial => "common_footer") %>
+</body>

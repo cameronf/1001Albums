@@ -1,0 +1,36 @@
+<%= render(:partial => "common_header") %>
+<body>
+
+<div class="tabheader">
+<br>
+<h1><span id="others_title" style="display:none">Others' Albums</span></h1>
+	<SELECT id="friends_wanted" name="friends_wanted" onChange="do_js_get_others_albums(this.value,'others_albums');"> 
+  <% for friend in @friends %>	
+			<option value=<%=friend.value%> ><%=friend.name%></option>
+	<% end %>
+	</SELECT>
+</div>
+
+<div id="loaded_frame" class="loaded_display" style="display:none">
+<%= render(:partial => "others_albums_filters") %>
+
+<div id="progress_dialog" style="display:none" class="progress_dialog">
+<span class="pd_text">
+Loading <img class="pd_image" src="<%=$APP_ROOT%>images/progress.gif" />
+</span>
+</div>
+
+<div id="others_albums" class="albums_display">
+</div>
+</div>
+<%= render(:partial => "common_footer") %>
+<script type="text/javascript">
+	do_js_set_state('<%=@user.session_id%>');
+	<% if @fb_other_in == "No User" %>
+		$('others_title').show();
+	<% else %>
+		do_js_get_others_albums(<%=@fb_other_in%>,'others_albums');
+	<% end %>
+</script>
+</body>
+

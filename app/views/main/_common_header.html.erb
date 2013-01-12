@@ -1,0 +1,22 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="http://static.ak.fbcdn.net/rsrc.php/zE1YI/hash/556bd2gb.css" />
+    <link type="text/css" rel="stylesheet" href="http://static.ak.fbcdn.net/rsrc.php/zLN4X/hash/bgt0tze9.css" />
+    <link type="text/css" rel="stylesheet" href="http://static.ak.fbcdn.net/rsrc.php/z8YRQ/hash/3sr0xzmw.css" />
+    <link type="text/css" rel="stylesheet" href="http://static.ak.fbcdn.net/rsrc.php/zEMPN/hash/3wefa409.css" />
+    <link type="text/css" rel="stylesheet" href="http://static.ak.fbcdn.net/rsrc.php/zD49F/hash/bdbk7zte.css" />
+  <%= stylesheet_link_tag "set_format", "set_owned", "set_heard", "set_rating", "styles_v5", "paginate_v1", :media => "all"%>
+	<!--[if IE]>
+  <%= stylesheet_link_tag "ie_styles_v1" %> 
+	<![endif]-->
+	
+</head>
+<a href="http://1001albums.fisheyedev.com/iframewantedtab">WANTED LIST</a>
+<a href="http://1001albums.fisheyedev.com/iframemyalbumstab">ALBUMS LIST</a>
+<% if @DEBUG %>
+<div class="debugger">
+	<span id = "ajax_debug">Debug</span><br>
+	<span id = "ajax_debug2">Debug2</span><br>
+	<a href="javascript:do_js_break_into_debugger()">Click Here to Debug</a><br>
+</div>
+<% end %>
+

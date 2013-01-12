@@ -1,0 +1,9 @@
+<%= render :partial => "header" %>
+
+<% content_for("invite_user") do %>
+        Time to discover some new old music.  Check out the 1001 Albums You Must Hear Before You Die! <%= fb_req_choice("Check it out!", $FB_APP_ROOT) %>
+<% end %>     
+
+<% fb_request_form("1001 Albums","invite_user", $FB_APP_ROOT) do %>
+        <%= fb_multi_friend_selector("Invite your friends to check out some albums", { :showborder => true, :exclude_ids => @fb_friends.map(&:id).join(",") } )   %>
+<% end %>   

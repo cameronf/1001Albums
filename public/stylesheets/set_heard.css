@@ -1,0 +1,47 @@
+/*             styles for the heard picker                */    
+    .set-heard{
+        list-style:none;
+        margin:0px;
+        padding:0px;
+        width: 24px;
+        height: 24px;
+        position: relative;
+				background: url(http://1001Albums.fisheyedev.com/images/heard.gif) no-repeat scroll 0px;
+    }
+    .set-heard li{
+        padding:0px;
+        margin:0px;
+        float: left;
+    }
+    .set-heard li a{
+        display: block;
+        width: 24px;
+        height: 24px;
+        text-decoration: none;
+        text-indent: -9000px;
+        position: absolute;
+        padding: 0px;
+				z-index: 20;
+    }
+    .set-heard li a:hover{
+        left: 0px;
+        border:none;
+				cursor: pointer;
+    }
+    .set-heard a.heard-1{
+        left: 0px;
+    }
+    .set-heard a.heard-1:hover{
+				background: url(http://1001Albums.fisheyedev.com/images/heard.gif) no-repeat scroll -24px 0px;
+				width: 24px;
+				z-index: 4;
+    }
+    .set-heard li.current-heard-1{
+				background: url(http://1001Albums.fisheyedev.com/images/heard.gif) no-repeat scroll -24px 0px;
+       	width: 24px;
+				height: 24px;
+				z-index: 1;
+				position: absolute;
+				display: block;
+				text-indent: -9000px;
+    }

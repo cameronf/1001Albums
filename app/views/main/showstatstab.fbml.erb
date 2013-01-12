@@ -1,0 +1,25 @@
+<%= render :partial => "header" %>
+
+<div class="tabheader">
+<br>
+<h1><%= fb_name(@fb_user, :useyou => :false, :firstnameonly => :true, :possessive => :true) %> Friends' Stats</h1>
+</div>
+
+<div class="leader_boards">
+	<% i = 1 %>
+	<div class="left_leaders">
+		<% for stat in @all_stats %>
+			<%= render(:partial => "stats_block", :locals => {:leader => stat,:fb_user_id => @fb_user.id}) %>
+			<% if i == @threes + 1 || @threes == 0 %>
+	</div>
+	<div class="center_leaders">
+			<% elsif i == 2 * (@threes + 1) || @threes == 0 %>
+	</div>
+	<div class="right_leaders">
+			<% end %>
+			<% i += 1 %>
+		<% end %>
+	</div>
+</div>
+
+<div id="hidden_form" style="display:none"></div>

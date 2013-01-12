@@ -1,0 +1,38 @@
+<div id="print_and_filter" class="print_and_filter">
+  <div id="show_filter_text" class="show_filter_text">
+    <a href="javascript:void(0)" onClick="Element.hide('show_filter_text');Element.show('hide_filter_text');Element.show('show_filter_controls')">Advanced Filters</a>
+  </div>
+  <div id="hide_filter_text" class="hide_filter_text" style="display:none">
+    <a href="javascript:void(0)" onClick="Element.hide('show_filter_controls');Element.show('show_filter_text');Element.hide('hide_filter_text');">Hide Filters</a><br>
+  </div>
+</div>
+<div id="show_filter_controls" style="display:none" class="show_filter_controls">
+<div class="filter_sort">
+Sort By:
+  <select name="sort_by" id="sort_by_select" onChange="do_js_get_sorted_albums(this.value,'my_albums')">
+    <option value="0" selected>Year</option>
+		<option value="1">Artist</option>
+    <option value="2">Rating</option>
+  </select>
+</div>
+
+<div class="filter_by">
+Filter By:
+  <select name="filter_by" id="filter_by_select" onChange="do_js_populate_filters(this.value, 'my_albums')" >
+    <option value="0" selected>No Filter</option>
+    <option value="1">Year</option>
+    <option value="2">Artist</option>
+    <option value="3">Rating</option>
+    <option value="4">Format</option>
+    <option value="5">Owned</option>
+    <option value="6">Heard</option>
+  </select>
+</div>
+
+<div id="filter_details" class="filter_details">
+</div>
+
+<div class="filter_go" id="filter_go" style="display:none">
+<input class="go_button" type="button" value="Go" onClick="do_js_get_filtered_albums('my_albums')"/>
+</div>
+</div>

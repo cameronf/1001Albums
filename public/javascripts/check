@@ -1,0 +1,62 @@
+22c22
+< 	new Ajax.Request('/ltrs/set_note?album_id='+album_id+'&note='+escape(note.getValue()), {asynchronous:true, evalScripts:true});
+---
+> 	new Ajax.Request('/ltrs/set_note?album_id='+album_id+'&note='+escape(note.getValue())+'&user_id='+user_id, {asynchronous:true, evalScripts:true});
+43c43
+< 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page='+page, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+---
+> 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page='+page+'&user_id='+user_id, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+50c50
+< 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&fb_chosen_friend='+fb_chosen_friend, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+---
+> 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&fb_chosen_friend='+fb_chosen_friend+'&user_id='+user_id, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+56c56
+< 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&sort_by='+sort_by, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+---
+> 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&sort_by='+sort_by+'&user_id='+user_id, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+62c62
+< 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?wanted_type='+wanted_type, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+---
+> 	new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?wanted_type='+wanted_type+'&user_id='+user_id, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+67c67
+< 	new Ajax.Updater('filter_details', '/ltrs/populate_filters?filter_by='+filter_by, {asynchronous:true, evalScripts:true, onComplete:function(request){Element.show('filter_go')}});
+---
+> 	new Ajax.Updater('filter_details', '/ltrs/populate_filters?filter_by='+filter_by+'&user_id='+user_id, {asynchronous:true, evalScripts:true, onComplete:function(request){Element.show('filter_go')}});
+77c77
+< 		new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&filter_details_1='+filter_details_1.getValue()+'&filter_details_2='+filter_details_2.getValue(), {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+---
+> 		new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&filter_details_1='+filter_details_1.getValue()+'&filter_details_2='+filter_details_2.getValue()+'&user_id='+user_id, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+81c81
+< 		new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&filter_details_1='+filter_details_1.getValue(), {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+---
+> 		new Ajax.Updater(album_div, '/ltrs/get_'+album_div+'?page=1&filter_details_1='+filter_details_1.getValue()+'&user_id='+user_id, {asynchronous:true, evalScripts:true, onComplete:function(request){do_js_finish_load(album_div)}});
+89c89
+< 	new Ajax.Updater('format_'+album_id, '/ltrs/set_format?album_id='+album_id+'&format_id='+id, {asynchronous:true, evalScripts:true});
+---
+> 	new Ajax.Updater('format_'+album_id, '/ltrs/set_format?album_id='+album_id+'&format_id='+id+'&user_id='+user_id, {asynchronous:true, evalScripts:true});
+96c96
+< 	new Ajax.Updater('heard_'+album_id, '/ltrs/set_heard?album_id='+album_id+'&heard_id='+id, {asynchronous:true, evalScripts:true});
+---
+> 	new Ajax.Updater('heard_'+album_id, '/ltrs/set_heard?album_id='+album_id+'&heard_id='+id+'&user_id='+user_id, {asynchronous:true, evalScripts:true});
+103c103
+< 	new Ajax.Updater('owned_'+album_id, '/ltrs/set_owned?album_id='+album_id+'&owned_id='+id, {asynchronous:true, evalScripts:true});
+---
+> 	new Ajax.Updater('owned_'+album_id, '/ltrs/set_owned?album_id='+album_id+'&owned_id='+id+'&user_id='+user_id, {asynchronous:true, evalScripts:true});
+115c115
+< 	new Ajax.Updater('rating_'+album_id, '/ltrs/set_rating?album_id='+album_id+'&rating='+id, {asynchronous:true, evalScripts:true});
+---
+> 	new Ajax.Updater('rating_'+album_id, '/ltrs/set_rating?album_id='+album_id+'&rating='+id+'&user_id='+user_id, {asynchronous:true, evalScripts:true});
+120c120
+< 	new Ajax.Updater('user_details_'+album_id, '/ltrs/clear_details?album_id='+album_id, {asynchronouse:true, evalScripts:true});
+---
+> 	new Ajax.Updater('user_details_'+album_id, '/ltrs/clear_details?album_id='+album_id+'&user_id='+user_id, {asynchronous:true, evalScripts:true});
+124,128c124,126
+< function do_js_check_cookie() {
+<   if (document.cookie.indexOf("_1001Albums_session") == -1) {
+<     alert("It looks like your browser has disabled 3rd Party Cookies.  In order to use this app, you must allow all cookies.");
+<   }
+<   return false;
+---
+> function do_js_set_state(uid) {
+> 	user_id = uid;
+> 	return false;

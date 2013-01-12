@@ -1,0 +1,12 @@
+	<div class="paginateheader">
+  	<%= will_paginate @details, :inner_window => 10, :page => @cur_page, :remote => true, :album_div => "others_albums" %>
+	</div>
+
+	<div id="albums" class="scrolling_albums">
+		<%= render(:partial => "others_albums_detail", :locals => {:details => @details}) %>
+	</div>
+
+	<script type="text/javascript">
+		$('others_title').replace("<span id=\"others_title\"><%= @fb_name %> Albums</span>");
+		$('others_title').show();
+	</script>

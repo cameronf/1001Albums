@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  year: 1
+  http_art: MyString
+  name: MyString
+  http_buy: MyString
+  artist: MyString
+
+two:
+  year: 1
+  http_art: MyString
+  name: MyString
+  http_buy: MyString
+  artist: MyString

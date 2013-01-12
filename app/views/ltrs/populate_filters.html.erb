@@ -1,0 +1,20 @@
+<% if @filter_by.to_i == 1 %>
+	<select name="filter_details_1" id="filter_details_1_select">
+		<% (1955..2007).each do |year| %>
+			<%= '<option value=' + year.to_s + '>' + year.to_s + '</option>' %>
+		<% end %>
+	</select>
+To
+	<select name="filter_details_2" id="filter_details_2_select">
+		<% (1955..2006).each do |year| %>
+			<%= '<option value=' + year.to_s + '>' + year.to_s + '</option>' %>
+		<% end %>
+		<%= '<option value=2007 selected>2007</option>' %>
+	</select>
+<% else %>
+  <select name="filter_details_1" id="filter_details_1_select">
+		<% for myfilter in @myfilters %>
+			<%= '<option value=' + myfilter.index.to_s + '>' + myfilter.text.to_s + '</option>' %>
+		<% end %>
+	</select>
+<% end %>

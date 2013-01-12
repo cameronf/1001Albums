@@ -1,0 +1,31 @@
+
+	.pd_text {
+		position: absolute;
+		top: 8px;
+		left: 40px;
+	}
+
+	.pd_image {
+		position: absolute;
+		top: 0px;
+		left: 90px;
+	}
+
+	.go_button {
+		height: 21px;
+		width: 36px;
+	}
+
+  .filter_go {
+    position: absolute;
+    left: 609px;
+    top: -1px;
+  }
+
+	.remote_link {
+		cursor: pointer;
+	}
+
+	.leader_stats {
+		cursor: default;
+	}

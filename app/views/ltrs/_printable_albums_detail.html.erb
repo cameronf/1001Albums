@@ -1,0 +1,60 @@
+<% i = 1 %>
+<% line = 1 %>
+<% for detail in @details %>
+	<% if i==1 %>
+		<% if line == 1 %>
+			<div class="printed_frame">
+		<% end %>
+				<div class="printed_album_details">
+	<% end %>
+					<div class="printed_album_details_<%=i.to_s%>" onClick="phone_toggle('phone_check_<%=h detail.album.id%>')">
+						<div class="album_image">
+							<%= build_image_link(detail.album) %>
+						</div>
+						<div class="phone_checked" id="phone_check_<%=h detail.album.id%>">
+							<img src="http://1001Albums.fisheyedev.com/images/phone_checked.gif" height="24" width="25">
+						</div>
+						<div class="printed_artist">
+							<%=h detail.album.artist %>
+						</div>
+						<div class="printed_title">
+							<%=h detail.album.title %> (<%=h detail.album.year %>)
+						</div>
+					</div>
+	<% if i==3 %>
+				</div>
+		<% line += 1 %>
+	<% end %>
+	<% i = i==3? 1 : i+1 %>
+	<% if line==12 %>
+			</div>
+			<div class="print_spacer">
+			</div>
+		<% line = 1 %>
+	<% end %>
+<% end %>
+<% if i==2 %>
+	<div class="printed_album_details_2"></div>
+	<div class="printed_album_details_3"></div>
+<% elsif i==3 %>
+	<div class="printed_album_details_3"></div>
+<% end %>
+<script>
+function phone_toggle(toggle_div) {
+    var tdv = document.getElementById(toggle_div)
+    if (tdv.style.display == 'block') {
+      localStorage.removeItem(toggle_div)
+      tdv.style.display = 'none'
+    } else {
+      tdv.style.display = 'block'
+      localStorage[toggle_div]='true'
+    }
+}
+function load_cached_checkmarks(){
+  var numKeys=localStorage.length
+  for (i=0;i<numKeys;i++) {
+    var tdv = document.getElementById(localStorage.key(i))
+    tdv.style.display = 'block'
+  }
+}
+</script>

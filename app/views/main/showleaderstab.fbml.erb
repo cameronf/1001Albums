@@ -1,0 +1,36 @@
+<%= render :partial => "header" %>
+
+<div class="tabheader">
+<br>
+<h1>Leader Boards</h1>
+</div>
+<div class="leader_boards">
+<div class="left_leaders">
+	<div align="center">
+	<h2>Top 10 Vinyl</h2>
+	</div>
+	<% for leader in @top_vinyl %>
+		<%= render(:partial => "stats_block", :locals => {:leader => leader, :fb_user_id => @fb_user.id}) %>
+	<% end %>
+</div>
+
+<div class="center_leaders">
+	<div align="center">
+	<h2>Top 10 Heard</h2>
+	</div>
+	<% for leader in @top_heard %>
+		<%= render(:partial => "stats_block", :locals => {:leader => leader, :fb_user_id => @fb_user.id}) %>
+	<% end %>
+</div>
+
+<div class="right_leaders">
+	<div align="center">
+	<h2>Top 10 Friends</h2>
+	</div>
+	<% for leader in @top_friends %>
+		<%= render(:partial => "stats_block", :locals => {:leader => leader, :fb_user_id => @fb_user.id}) %>
+	<% end %>
+</div>
+</div>
+
+<div id="hidden_form" style="display:none"></div>

@@ -1,0 +1,11 @@
+                    <li class='current-format-<%=@detail.format_id.to_s%>'></li>
+                      <li>
+                        <%= fast_ltr_details('Vinyl','format',1,@detail.album_id) %>
+                      </li>
+                      <li>
+                        <%= fast_ltr_details('CD','format',2,@detail.album_id) %>
+                      </li>
+                      <li>
+                        <%= fast_ltr_details('mp3','format',3,@detail.album_id) %>
+                      </li>
+

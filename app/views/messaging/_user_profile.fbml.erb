@@ -1,0 +1,33 @@
+<style type="text/css">
+td {
+	vertical-align: top;
+	font-weight: bold;
+}
+</style>
+<table>
+	<tr>
+		<td width="108px">
+		Last Heard
+		</td>
+		<td width="40px">
+		Stats
+		</td>
+	</tr>
+	<tr>
+<%= content_tag(:td, link_to(image_tag($APP_ROOT + "images/" + detail.album.id.to_s + ".jpg",:size => "100x100"),"http://www.amazon.com/gp/product/" + detail.album.asin + "?ie=UTF8&tag=1001album-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=" + detail.album.asin,:target => "_blank")) %>
+		<td style="font-weight: normal;width: 40px;">
+    	Heard<br>
+    	Owned<br>
+    	Vinyl<br>
+    	CD<br>
+    	mp3<br>
+  	</td>
+  	<td style="font-weight: normal;">
+    	<%= stats.heard %><br>
+    	<%= stats.owned %><br>
+    	<%= stats.vinyl %><br>
+    	<%= stats.cd %><br>
+    	<%= stats.mp3 %><br>
+  	</td>
+	</tr>
+</table>

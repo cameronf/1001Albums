@@ -1,0 +1,24 @@
+27c27,33
+< 	def self.getwanteddetails(user_id, sort_by, wanted_type, filter_by, filter_details_1, filter_details_2)
+---
+> 	def self.getwanteddetails(user)
+> 		user_id = user.id
+> 		sort_by = user.state[:sort_by].to_i
+> 		wanted_type = user.state[:wanted_type]
+> 		filter_by = user.state[:filter_by].to_i
+> 		filter_details_1 = user.state[:filter_details_1]
+> 		filter_details_2 = user.state[:filter_details_2]
+59c65
+< 					 		:order => $SORT_KEY[sort_by.to_i],
+---
+> 					 		:order => $SORT_KEY[sort_by],
+64c70,76
+< 	def self.getfiltereddetails(user_id, sort_by, filter_by, filter_details_1, filter_details_2, page)
+---
+> 	def self.getfiltereddetails(user_id, user, page)
+> 		sort_by = user.state[:sort_by].to_i
+> 		wanted_type = user.state[:wanted_type]
+> 		filter_by = user.state[:filter_by].to_i
+> 		filter_details_1 = user.state[:filter_details_1]
+> 		filter_details_2 = user.state[:filter_details_2]
+> 

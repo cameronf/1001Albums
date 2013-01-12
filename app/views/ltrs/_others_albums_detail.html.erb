@@ -1,0 +1,46 @@
+<% for detail in details %>
+<div class="album_details">
+	<div class="album_image">
+		<%= build_image_link(detail.album) %>
+	</div>
+	<div class="artist">
+		<%=h detail.album.artist %>
+	</div>
+	<div class="title">
+		<%=h detail.album.title %> (<%=h detail.album.year %>)
+	</div>
+	<div class="album_data">
+   	<ul class='set-heard'>
+			<li class='current-heard-<%=detail.heard_id.to_s%>'></li>
+   	</ul>
+   	<ul class='set-owned'>
+			<li class='current-owned-<%=detail.owned_id.to_s%>'></li>
+   	</ul>
+   	<ul class='set-format'>
+ 			<li class='current-format-<%=detail.format_id.to_s%>'></li>
+   	</ul>
+   	<ul class='set-rating'>
+  		<li class='current-rating-<%=detail.rating.to_s%>'></li>
+   	</ul>
+ 	</div>
+	<div class="other_album_notes">
+		<%=h detail.notes.nil? ? "" : detail.notes %>
+ 	</div>
+	<div class="buy_links">
+		<% if detail.album.asin != '' %>
+		<ul class="amazon_link">
+			<li>
+				<%= build_amazon_link(detail.album.asin) %>
+			</li>
+		</ul>
+		<% end %>
+		<% if detail.album.apple_id != 'NULL' %>
+		<ul class="apple_link">
+			<li>
+				<%= build_apple_link(detail.album.apple_id) %>
+			</li>
+		</ul>
+		<% end %>
+	</div>
+</div>
+<% end %>

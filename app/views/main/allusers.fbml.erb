@@ -1,0 +1,4 @@
+
+<% for fb_user in @fb_users %>
+	<%= fb_name(fb_user, :useyou=>:false) %> ID=<%=fb_user.id%><br>
+<% end %>

@@ -1,0 +1,64 @@
+/*             styles for the owned picker                */    
+    .set-owned{
+        list-style:none;
+        margin:0px;
+        padding:0px;
+        width: 48px;
+        height: 24px;
+        position: relative;
+				background: url(http://1001Albums.fisheyedev.com/images/owned.gif) no-repeat scroll 0px;
+    }
+    .set-owned li{
+        padding:0px;
+        margin:0px;
+        float: left;
+    }
+    .set-owned li a{
+        display: block;
+        width: 24px;
+        height: 24px;
+        text-decoration: none;
+        text-indent: -9000px;
+        position: absolute;
+        padding: 0px;
+				z-index: 20;
+    }
+    .set-owned li a:hover{
+        left: 0px;
+        border:none;
+				cursor: pointer;
+    }
+    .set-owned a.owned-1{
+        left: 0px;
+    }
+    .set-owned a.owned-1:hover{
+				background: url(http://1001Albums.fisheyedev.com/images/owned.gif) no-repeat scroll -48px 0px;
+				width: 48px;
+				z-index: 4;
+    }
+    .set-owned a.owned-2{
+        left: 24px;
+    }
+    .set-owned a.owned-2:hover{
+				background: url(http://1001Albums.fisheyedev.com/images/owned.gif) no-repeat scroll -96px 0px;
+				width: 48px;
+				z-index: 4;
+    }
+    .set-owned li.current-owned-1{
+				background: url(http://1001Albums.fisheyedev.com/images/owned.gif) no-repeat scroll -48px 0px;
+       	width: 48px;
+				height: 24px;
+				z-index: 1;
+				position: absolute;
+				display: block;
+				text-indent: -9000px;
+    }
+    .set-owned li.current-owned-2{
+				background: url(http://1001Albums.fisheyedev.com/images/owned.gif) no-repeat scroll -96px 0px;
+        width: 48px;
+				height: 24px;
+				z-index: 1;
+				position: absolute;
+				display: block;
+				text-indent: -9000px;
+    }
