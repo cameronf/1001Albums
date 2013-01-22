@@ -1,0 +1,11 @@
+development:
+  app_id: 38664113085
+  secret_key: dd1e4ba6767d4ab20019069bb7501196
+  app_root: 166.78.49.25
+  fb_root: https://apps.facebook.com/iooialbumsdev
+test:
+production:
+  app_id: 38664113085
+  secret_key: dd1e4ba6767d4ab20019069bb7501196
+  app_root: 166.78.49.25
+  fb_root: https://apps.facebook.com/iooialbums

@@ -1,0 +1,17 @@
+<div>
+<fb:header>1001 Albums You Must Hear Before You Die</fb:header>
+<div class="profile_button">
+<fb:if-section-not-added section="profile">
+    <fb:add-section-button section="profile" />
+</fb:if-section-not-added>
+</div>
+</div>
+
+<% fb_tabs do %>
+   <%= fb_tab_item("My Albums", showmyalbumstab_url, :selected => @tab=="My Albums") %>
+   <%= fb_tab_item("Wanted List", showwantedtab_url, :selected => @tab=="Wanted") %>
+   <%= fb_tab_item("Friends Stats", showstatstab_url, :selected => @tab=="Stats") %>
+   <%= fb_tab_item("Others Albums", showothersalbumstab_url, :selected => @tab=="Others Albums") %>
+   <%= fb_tab_item("Leaders", showleaderstab_url, :selected => @tab=="Leaders") %>
+   <%= fb_tab_item("Invite Friends", showinvitetab_url, :selected => @tab=="Invite") %>
+<% end %>
