@@ -1,21 +1,7 @@
 class LtrsController < ApplicationController
-	before_filter :get_user
-
 	require ('myfilter.rb')
 	require ('stats.rb')
-	require ('albums_publisher.rb')
-
-	def get_user
-		@user = User.init(params[:session_id],session[:facebook_session])	
-		begin
-			@fb_user = @user.state[:facebook_session].user
-			if @user.state[:facebook_session].expired?
-				redirect_to ($FB_APP_ROOT)
-			end
-		rescue
-			redirect_to ($FB_APP_ROOT)
-		end
-	end
+	# require ('albums_publisher.rb')
 
 	def show
 		redirect_to ($FB_APP_ROOT)
@@ -172,15 +158,18 @@ class LtrsController < ApplicationController
   end
 	
   def get_my_albums
+    logger.info "1"
 		@cur_page = params[:page]
 		@user.state[:sort_by] = params[:sort_by] if params[:sort_by]
 		@user.state[:filter_by] = params[:filter_by] if params[:filter_by]
 		@user.state[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
 		@user.state[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
 		@user.save
+    logger.info "2"
 
     @details = Detail.getfiltereddetails(@user.id,@user,@cur_page)
 
+    logger.info "3"
 		respond_to do |format|
 			format.html
 			format.fbml { render :template => 'ltrs/get_my_albums.html.erb' }

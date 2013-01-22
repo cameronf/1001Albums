@@ -1,26 +1,32 @@
-ActionController::Routing::Routes.draw do |map|
-	map.newuser 'newuser', :controller => 'main', :action => 'newuser'
-	map.new_entry 'new_entry', :controller => 'main', :action => 'new_entry'
-	map.showmyalbumstab 'showmyalbumstab', :controller => 'main', :action => 'showmyalbumstab'
-	map.showwantedtab 'showwantedtab', :controller => 'main', :action => 'showwantedtab'
-	map.showinvitetab 'showinvitetab', :controller => 'main', :action => 'showinvitetab'
-	map.showstatstab 'showstatstab', :controller => 'main', :action => 'showstatstab'
-	map.showleaderstab 'showleaderstab', :controller => 'main', :action => 'showleaderstab'
-	map.iframeothersalbumstab 'iframeothersalbumstab', :controller => 'main', :action => 'iframeothersalbumstab'
-	map.iframewantedtab 'iframewantedtab', :controller => 'main', :action => 'iframewantedtab'
-	map.iframemyalbumstab 'iframemyalbumstab', :controller => 'main', :action => 'iframemyalbumstab'
-	map.showothersalbumstab 'showothersalbumstab', :controller => 'main', :action => 'showothersalbumstab'
-	map.fbremove 'fbremove', :controller => 'admin', :action => 'fbremove'
-	map.fb_register_feed 'fb_register_feed', :controller => 'admin', :action => 'fb_register_feed'
-	map.allusers 'allusers', :controller => 'main', :action => 'allusers'
-  map.root :controller => "main"
-	map.resources :ltrs
+I00IAlbums::Application.routes.draw do
+# ActionController::Routing::Routes.draw do |map|
+  match 'newuser' => 'main#newuser'
+  match 'login' => 'main#login'
+	match 'new_entry' => 'main#new_entry'
+	match 'showmyalbumstab' => 'main#showmyalbumstab'
+	match 'showwantedtab' => 'main#showwantedtab'
+	match 'showinvitetab' => 'main#showinvitetab'
+	match 'showstatstab' => 'main#showstatstab'
+	match 'showleaderstab' => 'main#showleaderstab'
+	match 'iframeothersalbumstab' => 'main#iframeothersalbumstab'
+	match 'iframewantedtab' => 'main#iframewantedtab'
+	match 'iframemyalbumstab' => 'main#iframemyalbumstab'
+	match 'showothersalbumstab' => 'main#showothersalbumstab'
+	match 'fbremove' => 'admin#fbremove'
+	match 'fb_register_feed' => 'admin#fb_register_feed'
+	match 'allusers' => 'main#allusers'
+
+  root :to => 'main#index'
+
+	# resources :ltrs
 
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
-  map.connect ':controller/:action'
+  match 'ltrs/(:action)' => 'ltrs#:action'
+=begin
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-	map.connect '*anything', :controller => 'errorhandler', :action => 'unknownaction'
+	map.connect '*anything' => 'errorhandler#unknownaction'
+=end
 end

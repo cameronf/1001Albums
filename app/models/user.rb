@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
+  attr_accessible :session_id, :access_token
 	has_many :details
 	has_many :albums, :through => :details
 	has_many :heards, :through => :details
 	has_many :owneds, :through => :details
 	has_many :formats, :through => :details 	
 
-	serialize :state
+	serialize :state, Hash
 
 	# Logs the last time a user was seen
 
@@ -46,7 +47,6 @@ class User < ActiveRecord::Base
 	# in one of the tab calls. 
 	
 	def self.init(session_id, facebook_session)
-		logger.info session_id
 		if facebook_session.nil?
 			user = self.find_by_session_id(session_id)
 		elsif facebook_session.secured?

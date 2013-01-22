@@ -1,10 +1,4 @@
 class MainController < ApplicationController
-	# before_filter :ensure_application_is_installed_by_facebook_user, :except => :newuser
-	# before_filter :ensure_authenticated_to_facebook
-	before_filter :get_user, :except => :new_entry
-	# before_filter :get_user
-
-
 	require ('myfilter.rb')
 	require ('stats.rb')
 	require ('select_friends.rb')
@@ -13,9 +7,12 @@ class MainController < ApplicationController
 		redirect_to (showmyalbumstab_url)
 	end
 
+  def login
+  end
+
 	def new_entry
 		@user = User.find(23)
-		@user.update_attribute(:session_id,request.session.session_id)
+		@user.update_attribute(:session_id,request.session_options[:id])
 		redirect_to (iframemyalbumstab_url)
 	end
 
@@ -23,14 +20,16 @@ class MainController < ApplicationController
 		redirect_to ($FB_APP_ROOT)
 	end
 
+=begin
 	def get_user
-		@user = User.init(request.session.session_id,session[:facebook_session])
+		@user = User.init(request.session_options[:id],session[:facebook_session])
 		# begin
 			# @fb_user = @user.state[:facebook_session].user
 		# rescue
 			# redirect_to ($FB_APP_ROOT)
 		# end
 	end	
+=end
 
 	def get_friends
 		begin
@@ -49,7 +48,7 @@ class MainController < ApplicationController
 		end
 
 		respond_to do |format|
-			format.fbml
+			format.html
 		 	format.xml { render :xml => @details.to_xml }
 		end
 	end
@@ -76,7 +75,7 @@ class MainController < ApplicationController
 		@tab = "My Albums"
 
 		respond_to do |format|
-			format.fbml
+			format.html
 		 	format.xml { render :xml => @user.to_xml }
 		end
   end
@@ -86,7 +85,7 @@ class MainController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.fbml { render :file => RAILS_ROOT+"/app/views/main/iframemyalbumstab.html.erb", :layout=>true }
+			# format.fbml { render :file => RAILS_ROOT+"/app/views/main/iframemyalbumstab.html.erb", :layout=>true }
 		 	format.xml { render :xml => @details.to_xml }
 		end
   end

@@ -80,6 +80,7 @@ class Detail < ActiveRecord::Base
 	end
 
 	def self.getfiltereddetails(user_id, user, page)
+    logger.info user.state.inspect
 		sort_by = user.state[:sort_by].to_i
 		wanted_type = user.state[:wanted_type]
 		filter_by = user.state[:filter_by].to_i

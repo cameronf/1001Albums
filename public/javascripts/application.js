@@ -164,3 +164,12 @@ function do_js_create_mobile_list(sid) {
   submitForm.action= "http://1001Albums.fisheyedev.com/ltrs/mobile_list";
 	submitForm.submit();
 }
+
+Ajax.Base.prototype.initialize = Ajax.Base.prototype.initialize.wrap(
+    function (callOriginal, options) {
+        var headers = options.requestHeaders || {};
+        headers["X-CSRF-Token"] = AUTH_TOKEN
+        options.requestHeaders = headers;
+        return callOriginal(options);
+    }
+);
