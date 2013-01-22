@@ -1,9 +1,9 @@
 <div id="print_and_filter" class="print_and_filter">
   <div id="show_filter_text" class="show_filter_text">
-    <a href="javascript:void(0)" onClick="Element.hide('show_filter_text');Element.show('hide_filter_text');Element.show('show_filter_controls')">Advanced Filters</a>
+    <a href="javascript:void(0)" onClick="$('#show_filter_text').hide();$('#hide_filter_text').show();$('#show_filter_controls').show()">Advanced Filters</a>
   </div>
   <div id="hide_filter_text" class="hide_filter_text" style="display:none">
-    <a href="javascript:void(0)" onClick="Element.hide('show_filter_controls');Element.show('show_filter_text');Element.hide('hide_filter_text');">Hide Filters</a><br>
+    <a href="javascript:void(0)" onClick="$('#show_filter_controls').hide();$('#show_filter_text').show();$('#hide_filter_text').hide();">Hide Filters</a><br>
   </div>
 </div>
 <div id="show_filter_controls" style="display:none" class="show_filter_controls">

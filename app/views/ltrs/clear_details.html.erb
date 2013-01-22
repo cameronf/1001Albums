@@ -57,7 +57,6 @@
 							class="note_text"
 							ROWS="5" COLS="20" 
 							onClick="do_js_click_highlight_note(<%=detail.album_id%>);"
-							onFocus="do_js_focus_highlight_note(<%=detail.album_id%>);"
 							onChange="do_js_set_note(<%=detail.album_id%>);"
 		><%=h detail.notes.nil? ? "Enter Note" : detail.notes %></textarea>
  	</div>
