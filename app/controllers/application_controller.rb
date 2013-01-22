@@ -12,13 +12,20 @@ class ApplicationController < ActionController::Base
     # First, see if there is a user already logged in with the current session
     # and if so, test that we can get to FB
     @user = User.find_by_session_id(request.session["session_id"])
-    if @user && @user.access_token.present? && @graph = Koala::Facebook::GraphAPI.new(@user.access_token)  
-    else
+
+    # I don't like this, but it seems like the way Koala wants to fail is to
+    # throw an exception
+    begin 
+      @graph = Koala::Facebook::GraphAPI.new(@user.access_token)  
+    rescue
+      logger.info cookies.inspect
       @facebook_cookies ||= @oauth.get_user_info_from_cookies(cookies)
+      logger.info @facebook_cookies
       if @facebook_cookies
         @user = User.find_by_fb_user_id(@facebook_cookies["user_id"])
+        @access_token = @oauth.exchange_access_token(@facebook_cookies["access_token"])
         @user.update_attributes({ :session_id => request.session["session_id"], 
-                                  :access_token => @facebook_cookies["access_token"]})
+                                  :access_token => @access_token})
         @graph = Koala::Facebook::GraphAPI.new(@user.access_token)
       else
         redirect_to :controller => :main, :action => :login
