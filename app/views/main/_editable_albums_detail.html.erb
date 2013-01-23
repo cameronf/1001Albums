@@ -1,4 +1,3 @@
-<% for detail in details %>
 <div class="album_details">
 	<div class="album_image">
 		<%= build_image_link(detail.album) %>
@@ -83,20 +82,15 @@
 		</ul>
 	</div>
 	<div class="buy_links">
+    <p>
 		<% if detail.album.asin != '' %>
-		<ul class="amazon_link">
-			<li>
 				<%= build_amazon_link(detail.album.asin) %>
-			</li>
-		</ul>
 		<% end %>
+    </p>
+    <p>
 		<% if detail.album.apple_id != 'NULL' %>
-		<ul class="apple_link">
-			<li>
 				<%= build_apple_link(detail.album.apple_id) %>
-			</li>
-		</ul>
 		<% end %>
+    </p>
 	</div>
 </div>
-<% end %>

@@ -8,16 +8,16 @@ module ApplicationHelper
 	def build_image_link(album)
   # html = ''
   # html = '<a href="http://www.google.com">Hello</a>'
-	"<a href=\"http://www.amazon.com/gp/product/#{album.asin}?ie=UTF8&tag=1001album-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=#{album.asin}\" target=\"_blank\" title=\"Buy From Amazon\"><img height=\"100\" src=\"http://1001Albums.fisheyedev.com/images/#{album.id.to_s}.jpg\" width=\"100\" /></a>".html_safe
+	"<a href=\"http://www.amazon.com/gp/product/#{album.asin}?ie=UTF8&tag=1001album-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=#{album.asin}\" target=\"_blank\" title=\"Buy From Amazon\"><img height=\"100\" src=\"http://1001Albums.fisheyedev.com/images/#{album.id.to_s}.jpg\" width=\"100\" class='img-rounded' /></a>".html_safe
   #return html.html_safe
 	end
 
 	def build_amazon_link(asin)
-		"<a href=\"http://www.amazon.com/gp/product/#{asin}?ie=UTF8&tag=1001album-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=#{asin}\" target=\"_blank\" title=\"Buy From Amazon\" class=\"amazon_link\" ></a>".html_safe
+		"<a href=\"http://www.amazon.com/gp/product/#{asin}?ie=UTF8&tag=1001album-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=#{asin}\" target=\"_blank\" title=\"Buy From Amazon\" class=\"btn btn-small btn-primary\" >Amazon</a>".html_safe
 	end
 
 	def build_apple_link(apple_id)
-		"<a href=\"http://click.linksynergy.com/fs-bin/stat?id=fYzKU2MsuSo&offerid=146261&type=3&subid=0&tmpid=1826&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252FWebObjects%252FMZStore.woa%252Fwa%252FviewAlbum%253Fid%253D#{apple_id}%2526s%253D143441%2526partnerId%253D30\" class=\"apple_link\" title=\"Buy From iTunes\" target=\"_blank\"></a>".html_safe
+		"<a href=\"http://click.linksynergy.com/fs-bin/stat?id=fYzKU2MsuSo&offerid=146261&type=3&subid=0&tmpid=1826&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252FWebObjects%252FMZStore.woa%252Fwa%252FviewAlbum%253Fid%253D#{apple_id}%2526s%253D143441%2526partnerId%253D30\" class=\"btn btn-small btn-primary\" title=\"Buy From iTunes\" target=\"_blank\">iTunes</a>".html_safe
 	end
 
 	def build_wanted_amazon_link(asin)

@@ -15,6 +15,7 @@
   <%= javascript_include_tag "application" %>
 </head>
 <body>
+<div id="wrapper" class="container-fluid">
 <% if @DEBUG %>
 <div class="debugger">
   <span id = "ajax_debug">Debug</span><br>
@@ -69,5 +70,6 @@ $('a[data-toggle="tab"]').on('show', function (e) {
   e.relatedTarget // previous tab
 })
 </script>
+</div>
 </body>
 </html>

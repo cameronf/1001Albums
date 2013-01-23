@@ -3,5 +3,16 @@
 </div>
 
 <div id="myalbums" class="scrolling_albums">
-	<%= render(:partial => "/main/editable_albums_detail.html.erb", :locals => {:details => @details}) %>
+<% @details.each_slice(2) do |detail| %>
+<div class="row">
+  <div class="span8">
+	<%= render :partial => "/main/editable_albums_detail.html.erb", :locals => {:detail => detail[0]} %>
+  </div>
+  <% unless detail[1].nil? %>
+  <div class="span8">
+	<%= render :partial => "/main/editable_albums_detail.html.erb", :locals => {:detail => detail[1]} %>
+  </div>
+  <% end %>
+</div>
+<% end %>
 </div>
