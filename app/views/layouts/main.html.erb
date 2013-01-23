@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>1001Albums</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag "set_format", "set_owned", "set_heard", "set_rating", "styles_v5", "paginate_v1", :media => "all"%>
+  <!--[if IE]>
+  <%= stylesheet_link_tag "ie_styles_v1" %>
+  <![endif]-->
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jquery-1.9.0" %>
+  <%= javascript_include_tag "bootstrap" %>
+  <%= javascript_include_tag "application" %>
+</head>
+<body>
+<% if @DEBUG %>
+<div class="debugger">
+  <span id = "ajax_debug">Debug</span><br>
+  <span id = "ajax_debug2">Debug2</span><br>
+  <a href="javascript:do_js_break_into_debugger()">Click Here to Debug</a><br>
+</div>
+<% end %>
+<h1><center>1001 Albums To Hear Before You Die</center></h1>
+
+<div id="progress_dialog" class="progress_dialog modal fade">
+<span class="pd_text">
+Loading <img class="pd_image" src="<%=$APP_ROOT%>images/progress.gif" />
+</span>
+</div>
+
+<ul id="myTab" class="nav nav-pills">
+  <li class="active">
+    <a href="#myalbums" onClick="do_js_get_paged_albums(1,'my_albums');" data-toggle="tab">My Albums</a>
+  </li>
+  <li>
+    <a href="#wanted" onClick="do_js_get_wanted_albums('owned','wanted_albums');" data-toggle="tab">Wanted List</a>
+  </li>
+  <li>
+    <a href="#stats" data-toggle="tab">Friends Stats</a>
+  </li>
+  <li>
+    <a href="#othersalbums" data-toggle="tab">Others Albums</a>
+  </li>
+  <li>
+    <a href="#leaders" data-toggle="tab">Leaders</a>
+  </li>
+  <li>
+    <a href="#invite" data-toggle="tab">Invite Friends</a>
+  </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active in" id="myalbums">
+    <%= render :partial => "showmyalbumstab" %>
+  </div>
+  <div class="tab-pane fade" id="wanted">
+    <%= render :partial => "showwantedtab" %>
+  </div>
+</div>
+
+
+<%= yield %>
+
+<script>
+$('a[data-toggle="tab"]').on('show', function (e) {
+  // debugger;
+  e.target // activated tab
+  e.relatedTarget // previous tab
+})
+</script>
+</body>
+</html>

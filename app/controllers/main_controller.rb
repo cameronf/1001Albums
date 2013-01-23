@@ -4,7 +4,6 @@ class MainController < ApplicationController
 	require ('select_friends.rb')
 
 	def index
-		redirect_to (showmyalbumstab_url)
 	end
 
   def login
@@ -85,7 +84,6 @@ class MainController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			# format.fbml { render :file => RAILS_ROOT+"/app/views/main/iframemyalbumstab.html.erb", :layout=>true }
 		 	format.xml { render :xml => @details.to_xml }
 		end
   end
@@ -111,7 +109,6 @@ class MainController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.fbml { render :file => RAILS_ROOT+"/app/views/main/iframewantedtab.html.erb", :layout=>true }
 		 	format.xml { render :xml => @details.to_xml }
 		end
 	end

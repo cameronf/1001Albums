@@ -472,10 +472,6 @@
 
 	
 	.progress_dialog {
-		position: relative;
-		top: 100px;
-		margin-left: 275px;
-		width: 200px;
 		height: 50px;
 		border: 4px solid #BDC7D8;
 		font-size: 20px;
@@ -484,7 +480,7 @@
 	.pd_text {
 		position: absolute;
 		top: 14px;
-		left: 40px;
+		left: 200px;
 	}
 
 	.pd_image {

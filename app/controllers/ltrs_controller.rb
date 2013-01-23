@@ -203,7 +203,6 @@ class LtrsController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.fbml { render :template => 'ltrs/get_wanted_albums.html.erb' }
 		 	format.xml { render :xml => @details.to_xml }
 		end
 	end

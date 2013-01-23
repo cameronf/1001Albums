@@ -7,6 +7,14 @@
 </div>
 </div>
 
+<ul class="nav nav-pills">
+  <li class="active">
+    <a href="#">Home</a>
+  </li>
+  <li><a href="#">...</a></li>
+  <li><a href="#">...</a></li>
+</ul>
+
 <% fb_tabs do %>
    <%= fb_tab_item("My Albums", showmyalbumstab_url, :selected => @tab=="My Albums") %>
    <%= fb_tab_item("Wanted List", showwantedtab_url, :selected => @tab=="Wanted") %>

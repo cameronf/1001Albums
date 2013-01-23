@@ -28,14 +28,14 @@ function do_js_set_note(album_id) {
 }
  
 function do_js_start_load() {
-	$('#loaded_frame').hide();
-	$('#progress_dialog').show();
+	// $('#loaded_frame').hide();
+	$('#progress_dialog').modal('show');
 	return false;
 }
 
 function do_js_finish_load() {
-	$('#progress_dialog').hide();
-	$('#loaded_frame').show();
+	$('#progress_dialog').modal('hide');
+	// $('#loaded_frame').show();
 }
 
 function do_js_set_upper_year(year) {
