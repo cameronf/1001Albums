@@ -103,7 +103,7 @@ function do_js_populate_filters(filter_by) {
 
 function do_js_get_filtered_albums(album_div) {
 	var filter_details_1 = 'filter_details_1='+$('#filter_details_1_select').val();
-	if (document.getElementById('#filter_details_2_select')) {
+	if (document.getElementById('filter_details_2_select')) {
 		var filter_details_2 = '&filter_details_2='+$('#filter_details_2_select').val(); }
   else {
     var filter_details_2 = ''; }
