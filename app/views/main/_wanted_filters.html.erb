@@ -1,17 +1,17 @@
-<div id="print_and_filter" class="print_and_filter">
+<div id="w_print_and_filter" class="print_and_filter">
 	<div id="print_wanted_text" class="print_wanted_text">
-		<a href="javascript:void(0)" onClick="do_js_create_printable_list(session_id);">Create Printable List</a>
-		<a href="javascript:void(0)" onClick="do_js_create_mobile_list(session_id);">Create Mobile List</a>
+		<a href="javascript:void(0)" onClick="do_js_create_printable_list();">Create Printable List</a>
+		<a href="javascript:void(0)" onClick="do_js_create_mobile_list();">Create Mobile List</a>
 	</div>
-  <div id="show_filter_text" class="show_filter_text">
-    <a href="javascript:void(0)" onClick="$('#show_filter_text').hide();$('#hide_filter_text').show();$('#show_filter_controls').show()">Advanced Filters</a>
+  <div id="w_show_filter_text" class="show_filter_text">
+    <a href="javascript:void(0)" onClick="$('#w_show_filter_text').hide();$('#w_hide_filter_text').show();$('#w_show_filter_controls').show()">Advanced Filters</a>
   </div>
-  <div id="hide_filter_text" class="hide_filter_text" style="display:none">
-    <a href="javascript:void(0)" onClick="$('#show_filter_controls').hide();$('#show_filter_text').show();$('#hide_filter_text').hide();">Hide Filters</a><br>
+  <div id="w_hide_filter_text" class="w_hide_filter_text" style="display:none">
+    <a href="javascript:void(0)" onClick="$('#w_show_filter_controls').hide();$('#w_show_filter_text').show();$('#w_hide_filter_text').hide();">Hide Filters</a><br>
   </div>
 </div>
 
-<div id="show_filter_controls" class="show_filter_controls" style="display:none">
+<div id="w_show_filter_controls" class="show_filter_controls" style="display:none">
 <div class="filter_sort">
 Sort By:
   <select name="sort_by" id="sort_by_select" onChange="do_js_get_sorted_albums(this.value,'wanted_albums')">
@@ -31,16 +31,16 @@ Want:
 
 <div class="filter_by">
 Filter By:
-  <select name="filter_by" id="filter_by_select" onChange="do_js_populate_filters(this.value, 'wanted_albums')" >
+  <select name="filter_by" id="w_filter_by_select" onChange="do_js_populate_filters(this.value, 'wanted')" >
     <option value="0" selected>No Filter</option>
     <option value="1">Year</option>
     <option value="2">Artist</option>
   </select>
 </div>
 
-<div id="filter_details" class="filter_details">
+<div id="wanted_filter_details" class="filter_details">
 </div>
-<div id="filter_go" class="filter_go" style="display:none">
-<input class="go_button" type="button" value="Go" onClick="do_js_get_filtered_albums('wanted_albums')"/>
+<div id="wanted_filter_go" class="filter_go" style="display:none">
+<input class="go_button" type="button" value="Go" onClick="do_js_get_filtered_albums('wanted')"/>
 </div>
 </div>

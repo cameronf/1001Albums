@@ -90,28 +90,28 @@ function do_js_get_wanted_albums(wanted_type, album_div) {
 	return false;
 }
 
-function do_js_populate_filters(filter_by) {
+function do_js_populate_filters(filter_by,album_div) {
   $.ajax({
-    url: '/ltrs/populate_filters?filter_by='+filter_by,
+    url: '/ltrs/populate_filters?filter_by='+filter_by+'&div='+album_div,
     success: function(data, textStatus, jqXHR){
                       console.log(data);
-                      do_js_update_div_with_html(data,'filter_details')},
-    complete: function(xhr){$('#filter_go').show()}
+                      do_js_update_div_with_html(data,album_div+'_filter_details')},
+    complete: function(xhr){$('#'+album_div+'_filter_go').show()}
     });
 	return false;
 }
 
 function do_js_get_filtered_albums(album_div) {
-	var filter_details_1 = 'filter_details_1='+$('#filter_details_1_select').val();
-	if (document.getElementById('filter_details_2_select')) {
-		var filter_details_2 = '&filter_details_2='+$('#filter_details_2_select').val(); }
+	var filter_details_1 = 'filter_details_1='+$('#'+album_div+'_filter_details_1_select').val();
+	if (document.getElementById(album_div+'_filter_details_2_select')) {
+		var filter_details_2 = '&filter_details_2='+$('#'+album_div+'_filter_details_2_select').val(); }
   else {
     var filter_details_2 = ''; }
   $.ajax({
-    url: '/ltrs/get_'+album_div+'?page=1&'+filter_details_1+filter_details_2,
+    url: '/ltrs/get_'+album_div+'_albums?page=1&'+filter_details_1+filter_details_2,
     beforeSend: function(xhr){do_js_start_load()},
     success: function(data, textStatus, jqXHR){
-                      do_js_update_div_with_html(data,album_div)},
+                      do_js_update_div_with_html(data,album_div+'_albums')},
     complete: function(xhr){do_js_finish_load()}
   });
 	return false;

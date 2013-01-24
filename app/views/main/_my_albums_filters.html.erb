@@ -18,7 +18,7 @@ Sort By:
 
 <div class="filter_by">
 Filter By:
-  <select name="filter_by" id="filter_by_select" onChange="do_js_populate_filters(this.value, 'my_albums')" >
+  <select name="filter_by" id="filter_by_select" onChange="do_js_populate_filters(this.value, 'my')" >
     <option value="0" selected>No Filter</option>
     <option value="1">Year</option>
     <option value="2">Artist</option>
@@ -29,11 +29,11 @@ Filter By:
   </select>
 </div>
 
-<div id="filter_details" class="filter_details">
+<div id="my_filter_details" class="filter_details">
 </div>
 
-<div class="filter_go" id="filter_go" style="display:none">
-<input class="btn btn-mini btn-primary" type="button" value="Go" onClick="do_js_get_filtered_albums('my_albums')"/>
+<div class="filter_go" id="my_filter_go" style="display:none">
+<input class="btn btn-mini btn-primary" type="button" value="Go" onClick="do_js_get_filtered_albums('my')"/>
 </div>
 </div>
 <div class="clearfix after"></div>

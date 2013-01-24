@@ -1,39 +1,19 @@
-<% i = 1 %>
-<% for detail in @details %>
-	<% if i==1 %>
-		<div class="wanted_album_details">
-			<div class="wanted_album_details_left">
-	<% else %>
-			<div class="wanted_album_details_right">
-	<% end %>
-				<div class="album_image">
-					<%= build_image_link(detail.album) %>
-				</div>
-				<div class="wanted_artist">
-					<%=h detail.album.artist %>
-				</div>
-				<div class="wanted_title">
-					<%=h detail.album.title %> (<%=h detail.album.year %>)
-				</div>
-				<div class="wanted_buy_links">
-					<% if detail.album.asin != '' %>
-					<ul class="wanted_amazon_link">
-						<li>
-							<%= build_wanted_amazon_link(detail.album.asin) %>
-						</li>
-					</ul>
-					<% end %>
-					<% if detail.album.apple_id != 'NULL' %>
-					<ul class="wanted_apple_link">
-						<li>
-							<%= build_wanted_apple_link(detail.album.apple_id) %>
-						</li>
-					</ul>
-					<% end %>
-				</div>
-			</div>
-	<% if i==2 %>
-		</div>
-	<% end %>
-	<% i == 1? i=2:i=1 %>
-<% end %>
+<div class="span4 wanted_album_details">
+	<div class="album_image">
+		<%= build_image_link(detail.album) %>
+	</div>
+	<div class="wanted_artist">
+		<%=h detail.album.artist %>
+	</div>
+	<div class="wanted_title">
+		<%=h detail.album.title %> (<%=h detail.album.year %>)
+	</div>
+	<div class="wanted_buy_links">
+		<% if detail.album.asin != '' %>
+				<%= build_amazon_link(detail.album.asin) %>
+		<% end %>
+		<% if detail.album.apple_id != 'NULL' %>
+			<%= build_apple_link(detail.album.apple_id) %>
+ 		<% end %>
+	</div>
+</div>
