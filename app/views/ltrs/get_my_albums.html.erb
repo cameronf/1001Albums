@@ -1,16 +1,16 @@
 <div class="paginateheader">
-	<%= will_paginate @details, :inner_window => 10, :page => @cur_page, :remote => true, :album_div => "my_albums" %>
+	<%= will_paginate @details, :inner_window => 10, :page => @cur_page, :renderer => 'RemoteLinkRenderer' , :remote => {:update => 'my_albums'} %>
 </div>
 
 <div id="myalbums" class="scrolling_albums">
 <% @details.each_slice(2) do |detail| %>
 <div class="row">
   <div class="span8">
-	<%= render :partial => "/main/editable_albums_detail.html.erb", :locals => {:detail => detail[0]} %>
+	<%= render :partial => "/main/editable_albums_detail", :locals => {:detail => detail[0]} %>
   </div>
   <% unless detail[1].nil? %>
   <div class="span8">
-	<%= render :partial => "/main/editable_albums_detail.html.erb", :locals => {:detail => detail[1]} %>
+	<%= render :partial => "/main/editable_albums_detail", :locals => {:detail => detail[1]} %>
   </div>
   <% end %>
 </div>
