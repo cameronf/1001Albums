@@ -13,7 +13,8 @@
     // Additional init code here
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        window.top.location = '//<%= Facebook::APP_ROOT %>';
+        debugger;
+        window.top.location = '//<%= Facebook::APP_ROOT %>?fb_id='+response.authResponse.userID;
       } else if (response.status === 'not_authorized') {
         // not_authorized
         login();
@@ -37,19 +38,11 @@
   function login() {
     FB.login(function(response) {
         if (response.authResponse) {
-          window.top.location = '//<%= Facebook::APP_ROOT %>';
+          window.top.location = '//<%= Facebook::APP_ROOT %>?fb_id='+response.authResponse.userID;
         } else {
             // cancelled
         }
     });
   };
 
-</script>
-<script>
-//  var oauth_url = 'https://www.facebook.com/dialog/oauth/';
-//  oauth_url += '?client_id=<%= Facebook::APP_ID %>';
-//  oauth_url += '&redirect_uri=' + encodeURIComponent('<%= Facebook::FB_ROOT %>');
-//  oauth_url += '&scope=publish_actions'
-
-//  window.top.location = oauth_url;
 </script>

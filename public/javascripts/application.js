@@ -167,57 +167,6 @@ function do_js_clear_details(album_id) {
 	return false;
 }
 
-function do_js_set_state(sid) {
-	session_id = sid;
-	return false;
-}
-
 function do_js_break_into_debugger() {
 	debugger;
 }
-
-function getNewSubmitForm(){
-  var submitForm = document.createElement("FORM");
-  document.body.appendChild(submitForm);
-  submitForm.method = "POST";
-	submitForm.target = "Printable Albums";
-	submitForm.setAttribute('onsubmit',"window.open('','Printable Albums')");	
-  return submitForm;
-}
-
-//helper function to add elements to the form
-function createNewFormElement(inputForm,sid){
-	var newElement = document.createElement("input");
-	newElement.setAttribute('type','hidden');
-	newElement.setAttribute('name','session_id');
-	newElement.setAttribute('value',sid);
-  inputForm.appendChild(newElement);
-  return newElement;
-}
-
-//function that creates the form, adds some elements
-//and then submits it
-function do_js_create_printable_list(sid) {
-  var submitForm = getNewSubmitForm();
-  createNewFormElement(submitForm,sid);
-  submitForm.action= "http://<%= Facebook::APP_ROOT %>/ltrs/printable_list";
-	submitForm.submit();
-}
-
-//function that creates the form, adds some elements
-//and then submits it
-function do_js_create_mobile_list(sid) {
-  var submitForm = getNewSubmitForm();
-  createNewFormElement(submitForm,sid);
-  submitForm.action= "http://<%= Facebook::APP_ROOT %>/ltrs/mobile_list";
-	submitForm.submit();
-}
-
-// Ajax.Base.prototype.initialize = Ajax.Base.prototype.initialize.wrap(
-    // function (callOriginal, options) {
-        // var headers = options.requestHeaders || {};
-        // headers["X-CSRF-Token"] = AUTH_TOKEN
-        // options.requestHeaders = headers;
-        // return callOriginal(options);
-    // }
-// );

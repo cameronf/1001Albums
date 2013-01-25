@@ -7,6 +7,7 @@ class MainController < ApplicationController
 	end
 
   def login
+    render :layout=>false
   end
 
 	def new_entry

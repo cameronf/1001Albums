@@ -1,7 +1,7 @@
 <body onload = "load_cached_checkmarks();">
 <div class="mobile_frame">
 <% for detail in @details %>
-					<div class="mobile_album_details" onClick="phone_toggle('phone_check_<%=h detail.album.id%>')">
+					<div class="span4 mobile_album_details" onClick="phone_toggle('phone_check_<%=h detail.album.id%>')">
 						<div class="album_image">
 							<%= build_image_link(detail.album) %>
 						</div>

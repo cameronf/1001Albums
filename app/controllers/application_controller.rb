@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
     # This stuff seems completely horked, but if my logic is right,
     # First, see if there is a user already logged in with the current session
     # and if so, test that we can get to FB
-    @user = User.find_by_session_id(request.session["session_id"])
+    session["fb_id"] ||= params[:fb_id]
+    @user = User.find_by_fb_user_id(session["fb_id"]) unless session["fb_id"].nil?
 
     # I don't like this, but it seems like the way Koala wants to fail is to
     # throw an exception
@@ -27,6 +28,7 @@ class ApplicationController < ActionController::Base
         @user.update_attributes({ :session_id => request.session["session_id"], 
                                   :access_token => @access_token})
         @graph = Koala::Facebook::GraphAPI.new(@user.access_token)
+        session["fb_id"] = @user.fb_user_id
       else
         redirect_to :controller => :main, :action => :login
       end

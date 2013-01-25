@@ -389,56 +389,16 @@ h3 {
 	.mobile_album_details {
 		position: relative;
 		height: 108px;
-		width: device-width;
+		// width: device-width;
+    // width: 200px;
+    margin-left: 3%;
 		border: 1px solid #BDC7D8;
-	}
-	.printed_album_details {
-		position: relative;
-		height: 108px;
-		width: 940px;
-		border-bottom: 1px solid #BDC7D8;
+    border-radius: 5px;
 	}
 
 	.mobile_frame {
 		position: relative;
 		width: device-width;
-	}
-
-	.printed_frame {
-		position: relative;
-		height: 1198px;
-		width: 940px;
-		border-top: 1px solid #BDC7D8;
-	}
-
-	.print_spacer {
-		position: relative;
-		page-break-before: always;
-		width: 940px;
-	}
-
-	.printed_album_details_3 {
-		position: absolute;
-		left: 627px;
-		height: 108px;
-		width: 313px;
-		border-right: 1px solid #BDC7D8;
-	}
-
-	.printed_album_details_2 {
-		position: absolute;
-		left: 314px;
-		height: 108px;
-		width: 313px;
-		border-right: 1px solid #BDC7D8;
-	}
-
-	.printed_album_details_1 {
-		position: absolute;
-		height: 108px;
-		width: 313px;
-		border-right: 1px solid #BDC7D8;
-		border-left: 1px solid #BDC7D8;
 	}
 
 	.mobile_artist {
@@ -449,14 +409,6 @@ h3 {
 		font-weight: bold;
 	}
 
-	.printed_artist {
-		position: absolute;
-		bottom: 56px;
-		left: 108px;
-		font-size: 10pt;
-		width: 205px;
-	}
-
 	.mobile_title {
 		position: absolute;
 		top: 52px;
@@ -464,16 +416,6 @@ h3 {
 		left: 108px;
 		font-size: 12pt;
 		vertical-align: top;
-	}
-
-	.printed_title {
-		position: absolute;
-		top: 52px;
-		height: 48px;
-		left: 108px;
-		font-size: 10pt;
-		vertical-align: top;
-		width: 205px;
 	}
 
 	.wanted_album_details {
