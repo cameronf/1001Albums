@@ -13,7 +13,6 @@
     // Additional init code here
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        debugger;
         window.top.location = '//<%= Facebook::APP_ROOT %>?fb_id='+response.authResponse.userID;
       } else if (response.status === 'not_authorized') {
         // not_authorized
@@ -42,7 +41,7 @@
         } else {
             // cancelled
         }
-    });
+    },{scope:'publish_stream'});
   };
 
 </script>

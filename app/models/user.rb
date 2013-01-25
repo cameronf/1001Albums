@@ -21,13 +21,11 @@ class User < ActiveRecord::Base
 
 	# Creates a new user, and populates an empty list for them
 	
-	def self.adduser(facebook_session)
+	def self.adduser(fb_user_id)
 
 		user = self.new
-		user.fb_user_id = facebook_session.user.id 
+		user.fb_user_id = fb_user_id 
 		user.state = Hash.new
-		user.state[:facebook_session] = facebook_session
-		user.session_id = facebook_session.session_key
 		user.save
 		self.logtime(user.id)
 		
@@ -40,6 +38,7 @@ class User < ActiveRecord::Base
 			detail.save
 
 		end
+    return user
 	end
 
 	# Initializes the user, session, and state variables - deals with the situation where there are no cookies
