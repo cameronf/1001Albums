@@ -69,6 +69,11 @@ $('a[data-toggle="tab"]').on('show', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })
+
+$(window).resize(function() {
+  do_js_set_div_height('wanted_albums_scroll');
+  do_js_set_div_height('my_albums_scroll');
+});
 </script>
 </div>
 </body>

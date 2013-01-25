@@ -19,6 +19,14 @@ function do_js_focus_highlight_note(album_id) {
 }
 */
 
+function do_js_set_div_height(div_id) {
+  if (document.getElementById(div_id)) { 
+    var target = $('#'+div_id);
+    var new_height = $(window).height() - target.offset().top-10;
+    target.height(new_height);
+  }
+}
+
 function do_js_set_note(album_id) {
 	var note = $('#notes_'+album_id);
   $.ajax({

@@ -2,8 +2,11 @@
   <%= will_paginate @details, :inner_window => 10, :page => @cur_page, :renderer => 'RemoteLinkRenderer', :remote => {:update => 'wanted_albums'} %>
 </div>
 
-<div class="scrolling_albums">
+<div id="wanted_albums_scroll" class="scrolling_albums">
 <% @details.each do |detail| %>
 		<%= render(:partial => "/main/wanted_albums_detail", :locals => {:detail => detail}) %>
 <% end %>
+<script>
+  do_js_set_div_height('wanted_albums_scroll')
+</script>
 </div>

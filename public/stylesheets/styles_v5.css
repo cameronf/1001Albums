@@ -142,10 +142,6 @@ h3 {
     overflow-y: auto;
 	}
 
-	.scrolling_albums {
-		border: 1px solid #BDC7D8;
-	}
-
 	.album_details {
 		position: relative;
 		height: 108px;
