@@ -1,3 +1,4 @@
+<%= javascript_include_tag "http://code.jquery.com/jquery.min.js" %>
 <div id="fb-root"></div>
 <script>
   // Additional JS functions here
@@ -13,7 +14,7 @@
     // Additional init code here
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        window.top.location = '//<%= Facebook::APP_ROOT %>?fb_id='+response.authResponse.userID;
+        post_fb_id(response.authResponse.userID);
       } else if (response.status === 'not_authorized') {
         // not_authorized
         login();
@@ -37,11 +38,17 @@
   function login() {
     FB.login(function(response) {
         if (response.authResponse) {
-          window.top.location = '//<%= Facebook::APP_ROOT %>?fb_id='+response.authResponse.userID;
+          post_fb_id(response.authResponse.userID);
         } else {
             // cancelled
         }
     },{scope:'publish_stream'});
   };
 
+  function post_fb_id(fb_id) {
+    var url = '//<%= Facebook::APP_ROOT %>';
+    var form = $('<form action="' + url + '" method="post">' + '<input type="hidden" name="fb_id" value="' + fb_id + '" />' + '</form>');
+    $('body').append(form);
+    $(form).submit();
+  };
 </script>

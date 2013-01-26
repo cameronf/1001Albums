@@ -9,26 +9,19 @@ class ApplicationController < ActionController::Base
   def authenticate_with_fb
     @oauth = Koala::Facebook::OAuth.new
     # This stuff seems completely horked, but if my logic is right,
-    # First, see if there is a user already logged in with the current session
-    # and if so, test that we can get to FB
     session["fb_id"] = params["fb_id"] unless params[:fb_id].nil?
-    @user = User.find_by_fb_user_id(session["fb_id"]) unless session["fb_id"].nil?
+    @user = User.find_by_fb_user_id(session["fb_id"]) if session["fb_id"]
+    @graph = safe_koala_graph_new(@user.access_token) if @user
 
-    # I don't like this, but it seems like the way Koala wants to fail is to
-    # throw an exception
-    begin 
-      @graph = Koala::Facebook::GraphAPI.new(@user.access_token)  
-    rescue
-      logger.info cookies.inspect
-      @facebook_cookies ||= @oauth.get_user_info_from_cookies(cookies)
-      logger.info @facebook_cookies
+    if @graph.nil?
+      @facebook_cookies = safe_oauth_get_user_info_from_cookies(@oauth,cookies)
       if @facebook_cookies
         @user = User.find_by_fb_user_id(@facebook_cookies["user_id"]) unless @facebook_cookies["user_id"].nil?
         @user = User.adduser(@facebook_cookies["user_id"]) if @user.nil?
         @access_token = @oauth.exchange_access_token(@facebook_cookies["access_token"])
         @user.update_attributes({ :session_id => request.session["session_id"], 
                                   :access_token => @access_token})
-        @graph = Koala::Facebook::GraphAPI.new(@user.access_token)
+        @graph = safe_koala_graph_new(@user.access_token)
         session["fb_id"] = @user.fb_user_id
       else
         redirect_to :controller => :main, :action => :login
@@ -67,11 +60,25 @@ class ApplicationController < ActionController::Base
     logger.debug str
   end
 
+  private
+  
+  def safe_koala_graph_new(access_token)
+    begin
+      Koala::Facebook::GraphAPI.new(access_token)  
+    rescue
+      nil
+    end
+  end
+
+  def safe_oauth_get_user_info_from_cookies(oauth,cookies)
+    begin
+      oauth.get_user_info_from_cookies(cookies)
+    rescue
+      nil
+    end
+  end
 end
 
-$APP_ROOT = "http://1001Albums.fisheyedev.com/"
-$FB_APP_ROOT = "http://apps.new.facebook.com/iooialbums"
-#$FB_APP_ROOT = "http://1001Albums.fisheyedev.com"
 $RATING_WIDTH = 24
 $RATING_HEIGHT = 24
 $FORMAT_WIDTH = 24
