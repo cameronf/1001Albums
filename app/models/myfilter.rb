@@ -2,7 +2,7 @@ class MyFilter
 	attr_accessor :index
 	attr_accessor :text
 
-  def reset_session_filters(session)
+  def self.reset_session_filters(session)
     session[:sort_by] = 0
     session[:filter_by] = 0
     session[:filter_details_1] = -1

@@ -4,6 +4,7 @@ class MainController < ApplicationController
 	require ('select_friends.rb')
 
 	def index
+    MyFilter.reset_session_filters(session)
 	end
 
   def login
