@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     begin
       Koala::Facebook::GraphAPI.new(access_token)  
     rescue
-      nil
+      ''
     end
   end
 
@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
     begin
       oauth.get_user_info_from_cookies(cookies)
     rescue
-      nil
+      ''
     end
   end
 end
@@ -82,4 +82,3 @@ $RATING_WIDTH = 24
 $RATING_HEIGHT = 24
 $FORMAT_WIDTH = 24
 $FORMAT_HEIGHT = 24
-

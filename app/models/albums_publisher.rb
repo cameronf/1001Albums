@@ -1,3 +1,4 @@
+=begin
 class AlbumsPublisher < Facebooker::Rails::Publisher
 	def mini_feed_template
 		one_line_story_template("{*actor*} just listened to {*one_line_detail_string*}")
@@ -25,3 +26,4 @@ class AlbumsPublisher < Facebooker::Rails::Publisher
 		profile_main(fbml)
 	end
 end
+=end
