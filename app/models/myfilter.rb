@@ -2,6 +2,15 @@ class MyFilter
 	attr_accessor :index
 	attr_accessor :text
 
+  def reset_session_filters(session)
+    session[:sort_by] = 0
+    session[:filter_by] = 0
+    session[:filter_details_1] = -1
+    session[:filter_details_2] = 0
+    session[:other_user] = "No User"
+    session[:wanted_type] = "owned"
+  end
+
 	def self.getfilters(filter_key)
 		filters = self.new
 		filters.index = -1

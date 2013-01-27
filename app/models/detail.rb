@@ -5,6 +5,8 @@ class Detail < ActiveRecord::Base
 	belongs_to :owned
 	belongs_to :user
 
+  SORT_KEY = ['album_id ASC', 'albums.sortname ASC, album_id ASC', 'rating DESC, album_id ASC']
+
 	def self.getdetails(user_id, page)
 		paginate :per_page => 77, :page => page,
 						 :conditions => ["user_id = ?", user_id],
@@ -64,12 +66,12 @@ class Detail < ActiveRecord::Base
 		if downloadable
 			self.find	:all,
 					 			:conditions => conditions,
-					 			:order => $SORT_KEY[sort_by],
+					 			:order => SORT_KEY[sort_by],
 						  	:include => :album
 		else
 			paginate  :per_page => 150, :page => page,
 					 			:conditions => conditions,
-					 			:order => $SORT_KEY[sort_by],
+					 			:order => SORT_KEY[sort_by],
 						  	:include => :album
 		end
 
@@ -128,7 +130,7 @@ class Detail < ActiveRecord::Base
 
 		paginate  :per_page => 77, :page => page,
 					 		:conditions => conditions,
-					 		:order => $SORT_KEY[sort_by],
+					 		:order => SORT_KEY[sort_by],
 						  :include => :album
 				
 	end

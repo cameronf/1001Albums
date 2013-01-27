@@ -48,11 +48,7 @@ class MainController < ApplicationController
 
   def showmyalbumstab
 		User.logtime(@user.id)
-		session[:sort_by] = 0
-		session[:filter_by] = 0
-		session[:filter_details_1] = -1
-		session[:filter_details_2] = 0
-		session[:other_user] = "No User"
+    MyFilters::reset_session_filters(session)
 
 		@tab = "My Albums"
 
@@ -73,11 +69,7 @@ class MainController < ApplicationController
 =end
 
 	def showwantedtab
-		session[:sort_by] = 0
-		session[:wanted_type] = "owned"
-		session[:filter_by] = 0
-		session[:filter_details_1] = -1 
-		session[:filter_details_2] = 0
+    MyFilters::reset_session_filters(session)
 
 		respond_to do |format|
 			format.fbml
@@ -139,11 +131,7 @@ class MainController < ApplicationController
 	end
 
   def showothersalbumstab
-		@tab = "Others Albums"
-		session[:sort_by] = 0
-		session[:filter_by] = 0
-		session[:filter_details_1] = -1
-		session[:filter_details_2] = 0
+    MyFilters::reset_session_filters(session)
 		session[:other_user] = params[:fb_other_in].nil? ? "No User" : params[:fb_other_in]
 		@user.save
 

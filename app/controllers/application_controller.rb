@@ -83,5 +83,3 @@ $RATING_HEIGHT = 24
 $FORMAT_WIDTH = 24
 $FORMAT_HEIGHT = 24
 
-$SORT_KEY = ['album_id ASC', 'albums.sortname ASC, album_id ASC', 'rating DESC, album_id ASC']
-$FILTER_BY = ['','artist','title','year','format','owned','heard']
