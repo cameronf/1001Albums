@@ -6,7 +6,7 @@
         width: 72px;
         height: 24px;
         position: relative;
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll 0px;
+				background: url(/images/format.gif) no-repeat scroll 0px;
     }
     .set-format li{
         padding:0px;
@@ -32,7 +32,7 @@
         left: 0px;
     }
     .set-format a.format-1:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll -72px 0px;
+				background: url(/images/format.gif) no-repeat scroll -72px 0px;
 				width: 72px;
 				z-index: 4;
     }
@@ -40,7 +40,7 @@
         left: 24px;
     }
     .set-format a.format-2:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll -144px 0px;
+				background: url(/images/format.gif) no-repeat scroll -144px 0px;
 				width: 72px;
 				z-index: 4;
     }
@@ -48,12 +48,12 @@
 				left: 48px;
     }
     .set-format a.format-3:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll -216px 0px;
+				background: url(/images/format.gif) no-repeat scroll -216px 0px;
         width: 72px;
 				z-index: 4;
     }
     .set-format li.current-format-1{
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll -72px 0px;
+				background: url(/images/format.gif) no-repeat scroll -72px 0px;
        	width: 72px;
 				height: 24px;
 				z-index: 1;
@@ -62,7 +62,7 @@
 				text-indent: -9000px;
     }
     .set-format li.current-format-2{
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll -144px 0px;
+				background: url(/images/format.gif) no-repeat scroll -144px 0px;
         width: 72px;
 				height: 24px;
 				z-index: 1;
@@ -71,7 +71,7 @@
 				text-indent: -9000px;
     }
     .set-format li.current-format-3{
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll -216px 0px;
+				background: url(/images/format.gif) no-repeat scroll -216px 0px;
         width: 72px;
 				height: 24px;
 				z-index: 1;
@@ -80,7 +80,7 @@
 				text-indent: -9000px;
     }
     .set-format li.current-format-0{
-				background: url(http://1001Albums.fisheyedev.com/images/format.gif) no-repeat scroll 0px;
+				background: url(/images/format.gif) no-repeat scroll 0px;
         width: 72px;
 				height: 24px;
 				z-index: 1;

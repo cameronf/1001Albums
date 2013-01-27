@@ -6,7 +6,7 @@
         width: 24px;
         height: 24px;
         position: relative;
-				background: url(http://1001Albums.fisheyedev.com/images/heard.gif) no-repeat scroll 0px;
+				background: url(/images/heard.gif) no-repeat scroll 0px;
     }
     .set-heard li{
         padding:0px;
@@ -32,12 +32,12 @@
         left: 0px;
     }
     .set-heard a.heard-1:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/heard.gif) no-repeat scroll -24px 0px;
+				background: url(/images/heard.gif) no-repeat scroll -24px 0px;
 				width: 24px;
 				z-index: 4;
     }
     .set-heard li.current-heard-1{
-				background: url(http://1001Albums.fisheyedev.com/images/heard.gif) no-repeat scroll -24px 0px;
+				background: url(/images/heard.gif) no-repeat scroll -24px 0px;
        	width: 24px;
 				height: 24px;
 				z-index: 1;

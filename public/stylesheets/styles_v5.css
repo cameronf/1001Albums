@@ -245,7 +245,7 @@ h3 {
 
 	.clear_button {
 		list-style:none;
-		background: url(http://1001albums.fisheyedev.com/images/cancel_button.gif) no-repeat scroll 0px;
+		background: url(/images/cancel_button.gif) no-repeat scroll 0px;
 		display: block;
 		height: 12px;
 		width: 12px;
@@ -255,7 +255,7 @@ h3 {
 	}
 
 	.clear_button li a {
-		background: url(http://1001albums.fisheyedev.com/images/cancel_button.gif) no-repeat scroll 0px;
+		background: url(/images/cancel_button.gif) no-repeat scroll 0px;
 		display: block;
 		height: 12px;
 		position: absolute;
@@ -263,128 +263,12 @@ h3 {
 	}
 
 	.clear_button li a:hover {
-		background: url(http://1001albums.fisheyedev.com/images/cancel_button.gif) no-repeat scroll -12px 0px;
+		background: url(/images/cancel_button.gif) no-repeat scroll -12px 0px;
 		display: block;
 		height: 12px;
 		cursor: pointer;
 		left: 0px;
 		position: absolute;
-	}
-
-	.amazon_link {
-		list-style:none;
-		background: url(http://1001albums.fisheyedev.com/images/amazon.gif) no-repeat scroll 0px;
-		display: block;
-		height: 20px;
-		width: 100px;
-		margin: 0px;
-		padding: 0px;
-		top: 25px;
-		left: 5px;
-		position: relative;
-	}
-
-	.wanted_amazon_link {
-		list-style:none;
-		background: url(http://1001albums.fisheyedev.com/images/amazon.gif) no-repeat scroll 0px;
-		display: block;
-		height: 20px;
-		width: 100px;
-		margin: 0px;
-		padding: 0px;
-		left: 17px;
-		position: absolute;
-	}
-
-	.wanted_amazon_link li a {
-		background: url(http://1001albums.fisheyedev.com/images/amazon.gif) no-repeat scroll 0px;
-		display: block;
-		left: 0px;
-	}
-
-	.wanted_amazon_link li a:hover {
-		background: url(http://1001albums.fisheyedev.com/images/amazon.gif) no-repeat scroll -100px 0px;
-		display: block;
-		cursor: pointer;
-		left: 0px;
-	}
-
-	.amazon_link li a {
-		background: url(http://1001albums.fisheyedev.com/images/amazon.gif) no-repeat scroll 0px;
-		display: block;
-		height: 20px;
-		position: absolute;
-		left: 0px;
-		top: 0px;
-	}
-
-	.amazon_link li a:hover {
-		background: url(http://1001albums.fisheyedev.com/images/amazon.gif) no-repeat scroll -100px 0px;
-		display: block;
-		height: 20px;
-		cursor: pointer;
-		left: 0px;
-		position: absolute;
-	}
-
-	.apple_link {
-		list-style:none;
-		background: url(http://1001albums.fisheyedev.com/images/apple.gif) no-repeat scroll 0px;
-		display: block;
-		height: 20px;
-		width: 100px;
-		margin: 0px;
-		padding: 0px;
-		top: 35px;
-		left: 5px;
-		position: relative;
-	}
-
-	.apple_link li a {
-		background: url(http://1001albums.fisheyedev.com/images/apple.gif) no-repeat scroll 0px;
-		display: block;
-		height: 20px;
-		position: absolute;
-		left: 0px;
-		top: 0px;
-	}
-
-	.apple_link li a:hover {
-		background: url(http://1001albums.fisheyedev.com/images/apple.gif) no-repeat scroll -100px 0px;
-		display: block;
-		height: 20px;
-		cursor: pointer;
-		left: 0px;
-		position: absolute;
-	}
-
-	.wanted_apple_link {
-		list-style:none;
-		background: url(http://1001albums.fisheyedev.com/images/apple.gif) no-repeat scroll 0px;
-		display: block;
-		height: 20px;
-		width: 100px;
-		margin: 0px;
-		padding: 0px;
-		left: 137px;
-		top: 0px;
-		position: absolute;
-	}
-
-	.wanted_apple_link li a {
-		background: url(http://1001albums.fisheyedev.com/images/apple.gif) no-repeat scroll 0px;
-		display: block;
-		height: 20px;
-		left: 0px;
-		top: 0px;
-	}
-
-	.wanted_apple_link li a:hover {
-		background: url(http://1001albums.fisheyedev.com/images/apple.gif) no-repeat scroll -100px 0px;
-		display: block;
-		height: 20px;
-		cursor: pointer;
-		left: 0px;
 	}
 
 	.buy_links {

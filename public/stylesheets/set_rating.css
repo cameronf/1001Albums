@@ -6,7 +6,7 @@
         width: 96px;
         height: 24px;
         position: relative;
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll 0px;
+				background: url(/images/rating.gif) no-repeat scroll 0px;
     }
     .set-rating li{
         padding:0px;
@@ -32,7 +32,7 @@
         left: 0px;
     }
     .set-rating a.rating-1:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -96px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -96px 0px;
 				width: 96px;
 				z-index: 4;
     }
@@ -40,7 +40,7 @@
         left: 24px;
     }
     .set-rating a.rating-2:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -192px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -192px 0px;
 				width: 96px;
 				z-index: 4;
     }
@@ -48,7 +48,7 @@
 				left: 48px;
     }
     .set-rating a.rating-3:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -288px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -288px 0px;
         width: 96px;
 				z-index: 4;
     }
@@ -56,12 +56,12 @@
 				left: 72px;
     }
     .set-rating a.rating-4:hover{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -384px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -384px 0px;
         width: 96px;
 				z-index: 4;
     }
     .set-rating li.current-rating-1{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -96px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -96px 0px;
        	width: 96px;
 				height: 24px;
 				z-index: 1;
@@ -70,7 +70,7 @@
 				text-indent: -9000px;
     }
     .set-rating li.current-rating-2{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -192px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -192px 0px;
         width: 96px;
 				height: 24px;
 				z-index: 1;
@@ -79,7 +79,7 @@
 				text-indent: -9000px;
     }
     .set-rating li.current-rating-3{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -288px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -288px 0px;
         width: 96px;
 				height: 24px;
 				z-index: 1;
@@ -88,7 +88,7 @@
 				text-indent: -9000px;
 		}
     .set-rating li.current-rating-4{
-				background: url(http://1001Albums.fisheyedev.com/images/rating.gif) no-repeat scroll -384px 0px;
+				background: url(/images/rating.gif) no-repeat scroll -384px 0px;
         width: 96px;
 				height: 24px;
 				z-index: 1;

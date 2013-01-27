@@ -35,8 +35,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: I00IAlbums_production
+  database: 1001Albums_production
   pool: 5
   username: root
-  password:
+  password: 14Golds!
   socket: /var/run/mysqld/mysqld.sock
