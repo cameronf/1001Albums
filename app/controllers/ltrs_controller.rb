@@ -125,18 +125,18 @@ class LtrsController < ApplicationController
 
   def get_others_albums
 		@cur_page = params[:page]
-		@user.state[:sort_by] = params[:sort_by] if params[:sort_by]
-		@user.state[:filter_by] = params[:filter_by] if params[:filter_by]
-		@user.state[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
-		@user.state[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
-		@user.state[:other_user] = params[:fb_other_in] if params[:fb_other_in]
+		session[:sort_by] = params[:sort_by] if params[:sort_by]
+		session[:filter_by] = params[:filter_by] if params[:filter_by]
+		session[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
+		session[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
+		session[:other_user] = params[:fb_other_in] if params[:fb_other_in]
 		@user.save
 
-		if @user.state[:other_user] != "No User"
-			other_user_id = User.find_by_fb_user_id(@user.state[:other_user])
-    	@details = Detail.getfiltereddetails(other_user_id,@user,@cur_page)
+		if session[:other_user] != "No User"
+			other_user_id = User.find_by_fb_user_id(session[:other_user])
+    	@details = Detail.getfiltereddetails(other_user_id,session,@cur_page)
 			begin
-				@fb_user = Facebooker::User::new(@user.state[:other_user])
+				@fb_user = Facebooker::User::new(session[:other_user])
 				@fb_name = @fb_user.name + "'s"
 			rescue
 				@fb_name = "Other's"
@@ -144,13 +144,11 @@ class LtrsController < ApplicationController
 
 			respond_to do |format|
 				format.html
-				format.fbml { render :template => 'ltrs/get_others_albums.html.erb' }
 			 	format.xml { render :xml => @details.to_xml }
 			end
 		else
 			respond_to do |format|
 				format.html { render :template => 'ltrs/no_others_albums.html.erb' }
-				format.fbml { render :template => 'ltrs/no_others_albums.html.erb' }
 			 	format.xml { render :text => "No Friend Chosen" }
 			end
 
@@ -158,48 +156,40 @@ class LtrsController < ApplicationController
   end
 	
   def get_my_albums
-    logger.info "1"
 		@cur_page = params[:page]
-		@user.state[:sort_by] = params[:sort_by] if params[:sort_by]
-		@user.state[:filter_by] = params[:filter_by] if params[:filter_by]
-		@user.state[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
-		@user.state[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
-		@user.save
-    logger.info "2"
+		session[:sort_by] = params[:sort_by] if params[:sort_by]
+		session[:filter_by] = params[:filter_by] if params[:filter_by]
+		session[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
+		session[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
 
-    @details = Detail.getfiltereddetails(@user.id,@user,@cur_page)
+    @details = Detail.getfiltereddetails(@user.id,session,@cur_page)
 
-    logger.info "3"
 		respond_to do |format|
 			format.html
-			format.fbml { render :template => 'ltrs/get_my_albums.html.erb' }
 		 	format.xml { render :xml => @details.to_xml }
 		end
   end
 	
   def populate_filters
-		@user.state[:filter_by] = params[:filter_by]
-		@user.save
-		@filter_by = @user.state[:filter_by]
+		session[:filter_by] = params[:filter_by]
+		@filter_by = session[:filter_by]
     @myfilters = MyFilter.getfilters(@filter_by)
 
 		respond_to do |format|
 			format.html
-			format.fbml { render :template => 'ltrs/populate_filters.html.erb' }
 		 	format.xml { render :xml => @myfilters.to_xml }
 		end
   end
 
 	def get_wanted_albums
 		@cur_page = params[:page]
-		@user.state[:sort_by] = params[:sort_by] if params[:sort_by]
-		@user.state[:wanted_type] = params[:wanted_type] if params[:wanted_type]
-		@user.state[:filter_by] = params[:filter_by] if params[:filter_by]
-		@user.state[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
-		@user.state[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
-		@user.save
+		session[:sort_by] = params[:sort_by] if params[:sort_by]
+		session[:wanted_type] = params[:wanted_type] if params[:wanted_type]
+		session[:filter_by] = params[:filter_by] if params[:filter_by]
+		session[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
+		session[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
 
-    @details = Detail.getwanteddetails({:user => @user,:page => @cur_page})
+    @details = Detail.getwanteddetails(@user.id,session,@cur_page)
 
 		respond_to do |format|
 			format.html
@@ -207,20 +197,9 @@ class LtrsController < ApplicationController
 		end
 	end
 
-	def printable_list
+	def downloadable_list
 
-    @details = Detail.getwanteddetails({:user => @user, :printable => true})
-
-		respond_to do |format|
-			format.html
-			format.fbml { render :template => 'ltrs/printable_list.html.erb' }
-		 	format.xml { render :xml => @details.to_xml }
-		end
-	end
-
-	def mobile_list
-
-    @details = Detail.getwanteddetails({:user => @user, :printable => true})
+    @details = Detail.getwanteddetails(@user.id,session,@cur_page,true)
 
 		respond_to do |format|
 			format.html

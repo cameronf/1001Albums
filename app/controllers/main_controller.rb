@@ -10,26 +10,9 @@ class MainController < ApplicationController
     render :layout=>false
   end
 
-	def new_entry
-		@user = User.find(23)
-		@user.update_attribute(:session_id,request.session_options[:id])
-		redirect_to (iframemyalbumstab_url)
-	end
-
 	def show
 		redirect_to ($FB_APP_ROOT)
 	end
-
-=begin
-	def get_user
-		@user = User.init(request.session_options[:id],session[:facebook_session])
-		# begin
-			# @fb_user = @user.state[:facebook_session].user
-		# rescue
-			# redirect_to ($FB_APP_ROOT)
-		# end
-	end	
-=end
 
 	def get_friends
 		begin
@@ -65,12 +48,11 @@ class MainController < ApplicationController
 
   def showmyalbumstab
 		User.logtime(@user.id)
-		@user.state[:sort_by] = 0
-		@user.state[:filter_by] = 0
-		@user.state[:filter_details_1] = -1
-		@user.state[:filter_details_2] = 0
-		@user.state[:other_user] = "No User"
-		@user.save
+		session[:sort_by] = 0
+		session[:filter_by] = 0
+		session[:filter_details_1] = -1
+		session[:filter_details_2] = 0
+		session[:other_user] = "No User"
 
 		@tab = "My Albums"
 
@@ -80,23 +62,22 @@ class MainController < ApplicationController
 		end
   end
 
+=begin
   def iframemyalbumstab
-    # @details = Detail.getdetails(@user.id,params[:page])
 
 		respond_to do |format|
 			format.html
 		 	format.xml { render :xml => @details.to_xml }
 		end
   end
+=end
 
 	def showwantedtab
-		@tab = "Wanted"
-		@user.state[:sort_by] = 0
-		@user.state[:wanted_type] = "owned"
-		@user.state[:filter_by] = 0
-		@user.state[:filter_details_1] = -1 
-		@user.state[:filter_details_2] = 0
-		@user.save
+		session[:sort_by] = 0
+		session[:wanted_type] = "owned"
+		session[:filter_by] = 0
+		session[:filter_details_1] = -1 
+		session[:filter_details_2] = 0
 
 		respond_to do |format|
 			format.fbml
@@ -104,15 +85,15 @@ class MainController < ApplicationController
 		end
 	end
 
+=begin
   def iframewantedtab
-
-    # @details = Detail.getwanteddetails({:user => @user,:page => params[:page]})
 
 		respond_to do |format|
 			format.html
 		 	format.xml { render :xml => @details.to_xml }
 		end
 	end
+=end
 
 	def showinvitetab
 		@tab = "Invite"
@@ -159,11 +140,11 @@ class MainController < ApplicationController
 
   def showothersalbumstab
 		@tab = "Others Albums"
-		@user.state[:sort_by] = 0
-		@user.state[:filter_by] = 0
-		@user.state[:filter_details_1] = -1
-		@user.state[:filter_details_2] = 0
-		@user.state[:other_user] = params[:fb_other_in].nil? ? "No User" : params[:fb_other_in]
+		session[:sort_by] = 0
+		session[:filter_by] = 0
+		session[:filter_details_1] = -1
+		session[:filter_details_2] = 0
+		session[:other_user] = params[:fb_other_in].nil? ? "No User" : params[:fb_other_in]
 		@user.save
 
 		respond_to do |format|
@@ -174,7 +155,7 @@ class MainController < ApplicationController
 
 	def iframeothersalbumstab
 		get_friends
-		@fb_other_in = @user.state[:other_user]
+		@fb_other_in = session[:other_user]
 		@friends = Select_Friends.build_values(@fb_friends, @fb_other_in)
 	end
 

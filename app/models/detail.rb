@@ -24,17 +24,13 @@ class Detail < ActiveRecord::Base
 		return d
 	end
 
-	def self.getwanteddetails(options)
-		user = options[:user]
-		page = options[:page]
-		printable = options[:printable]
+	def self.getwanteddetails(user_id, session, page, downloadable = nil)
 
-		user_id = user.id
-		sort_by = user.state[:sort_by].to_i
-		wanted_type = user.state[:wanted_type]
-		filter_by = user.state[:filter_by].to_i
-		filter_details_1 = user.state[:filter_details_1]
-		filter_details_2 = user.state[:filter_details_2]
+		sort_by = session[:sort_by].to_i
+		wanted_type = session[:wanted_type]
+		filter_by = session[:filter_by].to_i
+		filter_details_1 = session[:filter_details_1]
+		filter_details_2 = session[:filter_details_2]
 
 		if wanted_type == "heard"
 			conditions = ["user_id = ? and details.heard_id = 0", user_id]
@@ -65,7 +61,7 @@ class Detail < ActiveRecord::Base
 				end
 		end
 		
-		if printable
+		if downloadable
 			self.find	:all,
 					 			:conditions => conditions,
 					 			:order => $SORT_KEY[sort_by],
@@ -79,13 +75,12 @@ class Detail < ActiveRecord::Base
 
 	end
 
-	def self.getfiltereddetails(user_id, user, page)
-    logger.info user.state.inspect
-		sort_by = user.state[:sort_by].to_i
-		wanted_type = user.state[:wanted_type]
-		filter_by = user.state[:filter_by].to_i
-		filter_details_1 = user.state[:filter_details_1]
-		filter_details_2 = user.state[:filter_details_2]
+	def self.getfiltereddetails(user_id, session, page)
+		sort_by = session[:sort_by].to_i
+		wanted_type = session[:wanted_type]
+		filter_by = session[:filter_by].to_i
+		filter_details_1 = session[:filter_details_1]
+		filter_details_2 = session[:filter_details_2]
 
 		if filter_by == 0 || filter_details_1.to_i == -1
 			conditions = ["user_id = ?", user_id]

@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_with_fb
     @oauth = Koala::Facebook::OAuth.new
-    # This stuff seems completely horked, but if my logic is right,
     session["fb_id"] = params["fb_id"] unless params[:fb_id].nil?
     @user = User.find_by_fb_user_id(session["fb_id"]) if session["fb_id"]
     @graph = safe_koala_graph_new(@user.access_token) if @user
@@ -40,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery :secret => '51ea340fe2830836a98ce7786a927099'
+  # protect_from_forgery :secret => '51ea340fe2830836a98ce7786a927099'
 
   def method_missing(methondname, *args)
     redirect_to :controller => "errorhandler", :action => "unknownaction"

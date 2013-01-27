@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
 	has_many :owneds, :through => :details
 	has_many :formats, :through => :details 	
 
-	serialize :state, Hash
-
 	# Logs the last time a user was seen
 
 	def self.logtime(user_id)
@@ -25,7 +23,6 @@ class User < ActiveRecord::Base
 
 		user = self.new
 		user.fb_user_id = fb_user_id 
-		user.state = Hash.new
 		user.save
 		self.logtime(user.id)
 		
@@ -41,6 +38,7 @@ class User < ActiveRecord::Base
     return user
 	end
 
+=begin
 	# Initializes the user, session, and state variables - deals with the situation where there are no cookies
 	# session_id is passed as a param from any iframe call, if facebook_session is the only thing there, then I'm
 	# in one of the tab calls. 
@@ -74,6 +72,7 @@ class User < ActiveRecord::Base
 
 		return user
 	end
+=end
 
 	# Deletes a user, and all of their history
 	
