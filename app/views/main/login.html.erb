@@ -1,5 +1,32 @@
-<%= javascript_include_tag "http://code.jquery.com/jquery.min.js" %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>1001Albums</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag "set_format", "set_owned", "set_heard", "set_rating", "styles_v5", "paginate_v1", :media => "all"%>
+  <!--[if IE]>
+  <%= stylesheet_link_tag "ie_styles_v1" %>
+  <![endif]-->
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "http://code.jquery.com/jquery.min.js" %>
+  <%= javascript_include_tag "bootstrap" %>
+  <%= javascript_include_tag "application" %>
+ <meta name="viewport" content="width=device-width">
+</head>
+<body>
 <div id="fb-root"></div>
+<div class="login-container">
+  <div class="login-main">
+    <div class="btn btn-med btn-primary fb-login" id="fb-login">Log In With Facebook</div>
+    <div class="clearfix"></div>
+    <div class="intro-text">
+The unofficial site to track your progress, and your friends', against this amazing book.
+    </div>
+  </div>
+</div>
+</body>
 <script>
   // Additional JS functions here
   window.fbAsyncInit = function() {
@@ -17,10 +44,10 @@
         post_fb_id(response.authResponse.userID);
       } else if (response.status === 'not_authorized') {
         // not_authorized
-        login();
+        // login();
       } else {
         // not_logged_in
-        login();
+        // login();
       }
     });
 
@@ -35,14 +62,15 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 
+  document.getElementById('fb-login').onclick = function() {login();};
+
   function login() {
     FB.login(function(response) {
-        if (response.authResponse) {
-          post_fb_id(response.authResponse.userID);
-        } else {
-            // cancelled
-        }
-    },{scope:'publish_stream'});
+      if (response.status === 'connected') {
+        post_fb_id(response.authResponse.userID);
+      } else {
+      }
+    });
   };
 
   function post_fb_id(fb_id) {
@@ -52,3 +80,4 @@
     $(form).submit();
   };
 </script>
+
