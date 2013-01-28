@@ -13,7 +13,7 @@
 <div id="w_show_filter_controls" class="show_filter_controls" style="display:none">
 <div class="filter_sort">
 Sort By:
-  <select name="sort_by" id="sort_by_select" onChange="do_js_get_sorted_albums(this.value,'wanted_albums')">
+  <select name="sort_by" id="wanted_sort_by_select" class="sort_by_select">
     <option value="0" selected>Year</option>
 		<option value="1">Artist</option>
     <option value="2">Rating</option>
@@ -22,7 +22,7 @@ Sort By:
 
 <div class="filter_wanted">
 Want:
-	<select name="wanted_type" id="wanted_type" onChange="do_js_get_wanted_albums(this.value,'wanted_albums')">
+	<select name="wanted_type" id="wanted_type">
 		<option value="owned" selected>To Buy</option>
 		<option value="heard">To Hear</option>
 	</select>
@@ -39,7 +39,7 @@ Filter By:
 
 <div id="wanted_filter_details" class="filter_details">
 </div>
-<div id="wanted_filter_go" class="filter_go" style="display:none">
+<div id="wanted_filter_go" class="filter_go">
 <input class="btn btn-mini btn-primary" type="button" value="Go" onClick="do_js_get_filtered_albums('wanted')"/>
 </div>
 </div>

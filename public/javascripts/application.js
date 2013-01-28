@@ -110,13 +110,20 @@ function do_js_populate_filters(filter_by,album_div) {
 }
 
 function do_js_get_filtered_albums(album_div) {
-	var filter_details_1 = 'filter_details_1='+$('#'+album_div+'_filter_details_1_select').val();
-	if (document.getElementById(album_div+'_filter_details_2_select')) {
-		var filter_details_2 = '&filter_details_2='+$('#'+album_div+'_filter_details_2_select').val(); }
-  else {
+  var sort_by = '&sort_by='+$('#'+album_div+'_sort_by_select').val();
+	var filter_details_1 = '&filter_details_1='+$('#'+album_div+'_filter_details_1_select').val();
+  var wts = document.getElementById('wanted_type');
+  if (wts) {
+    var wanted_type = '&wanted_type='+wts.value;
+  } else {
+    var wanted_type = '';}
+  var fd2s = document.getElementById(album_div+'_filter_details_2_select');
+  if (fd2s) {
+		var filter_details_2 = '&filter_details_2='+fd2s.value;
+  } else {
     var filter_details_2 = ''; }
   $.ajax({
-    url: '/ltrs/get_'+album_div+'_albums?page=1&'+filter_details_1+filter_details_2,
+    url: '/ltrs/get_'+album_div+'_albums?page=1'+sort_by+wanted_type+filter_details_1+filter_details_2,
     beforeSend: function(xhr){do_js_start_load()},
     success: function(data, textStatus, jqXHR){
                       do_js_update_div_with_html(data,album_div+'_albums')},

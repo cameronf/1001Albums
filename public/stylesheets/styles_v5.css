@@ -87,7 +87,7 @@ h3 {
     margin-bottom: 0px;
   }
 
-  #sort_by_select {
+  .sort_by_select {
     width: 75px;
   }
 
@@ -150,11 +150,11 @@ h3 {
 
 	.filter_details {
     margin-left: 20px;
-    margin-right: 20px;
     float: left;
 	}
 
 	.filter_go {
+    margin-left: 20px;
     float: left;
 	}
 

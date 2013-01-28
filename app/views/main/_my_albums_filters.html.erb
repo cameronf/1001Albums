@@ -9,7 +9,7 @@
 <div id="show_filter_controls" style="display:none" class="show_filter_controls">
 <div class="filter_sort">
 Sort By:
-  <select name="sort_by" id="sort_by_select" onChange="do_js_get_sorted_albums(this.value,'my_albums')">
+  <select name="sort_by" id="my_sort_by_select" class="sort_by_select">
     <option value="0" selected>Year</option>
 		<option value="1">Artist</option>
     <option value="2">Rating</option>
@@ -32,7 +32,7 @@ Filter By:
 <div id="my_filter_details" class="filter_details">
 </div>
 
-<div class="filter_go" id="my_filter_go" style="display:none">
+<div class="filter_go" id="my_filter_go">
 <input class="btn btn-mini btn-primary" type="button" value="Go" onClick="do_js_get_filtered_albums('my')"/>
 </div>
 </div>
