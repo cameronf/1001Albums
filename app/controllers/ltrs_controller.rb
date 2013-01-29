@@ -157,12 +157,12 @@ class LtrsController < ApplicationController
 	
   def get_my_albums
 		@cur_page = params[:page]
-		session[:sort_by] = params[:sort_by] if params[:sort_by]
-		session[:filter_by] = params[:filter_by] if params[:filter_by]
-		session[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
-		session[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
+		session[:my_sort_by] = params[:sort_by] if params[:sort_by]
+		session[:my_filter_by] = params[:filter_by] if params[:filter_by]
+		session[:my_filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
+		session[:my_filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
 
-    @details = Detail.getfiltereddetails(@user.id,session,@cur_page)
+    @details = Detail.getmydetails(@user.id,session,@cur_page)
 
 		respond_to do |format|
 			format.html
@@ -171,8 +171,10 @@ class LtrsController < ApplicationController
   end
 	
   def populate_filters
-		session[:filter_by] = params[:filter_by]
-		@filter_by = session[:filter_by]
+		session[:my_filter_by] = params[:filter_by] if params[:div] == 'my' 
+		session[:wanted_filter_by] = params[:filter_by] if params[:div] == 'wanted' 
+		@filter_by = params[:filter_by]
+
     @myfilters = MyFilter.getfilters(@filter_by)
 
 		respond_to do |format|
@@ -183,11 +185,11 @@ class LtrsController < ApplicationController
 
 	def get_wanted_albums
 		@cur_page = params[:page]
-		session[:sort_by] = params[:sort_by] if params[:sort_by]
+		session[:wanted_sort_by] = params[:sort_by] if params[:sort_by]
 		session[:wanted_type] = params[:wanted_type] if params[:wanted_type]
-		session[:filter_by] = params[:filter_by] if params[:filter_by]
-		session[:filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
-		session[:filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
+		session[:wanted_filter_by] = params[:filter_by] if params[:filter_by]
+		session[:wanted_filter_details_1] = params[:filter_details_1] if params[:filter_details_1]
+		session[:wanted_filter_details_2] = params[:filter_details_2] if params[:filter_details_2]
 
     @details = Detail.getwanteddetails(@user.id,session,@cur_page)
 

@@ -28,11 +28,11 @@ class Detail < ActiveRecord::Base
 
 	def self.getwanteddetails(user_id, session, page, downloadable = nil)
 
-		sort_by = session[:sort_by].to_i
+		sort_by = session[:wanted_sort_by].to_i
 		wanted_type = session[:wanted_type]
-		filter_by = session[:filter_by].to_i
-		filter_details_1 = session[:filter_details_1]
-		filter_details_2 = session[:filter_details_2]
+		filter_by = session[:wanted_filter_by].to_i
+		filter_details_1 = session[:wanted_filter_details_1]
+		filter_details_2 = session[:wanted_filter_details_2]
 
 		if wanted_type == "heard"
 			conditions = ["user_id = ? and details.heard_id = 0", user_id]
@@ -77,12 +77,11 @@ class Detail < ActiveRecord::Base
 
 	end
 
-	def self.getfiltereddetails(user_id, session, page)
-		sort_by = session[:sort_by].to_i
-		wanted_type = session[:wanted_type]
-		filter_by = session[:filter_by].to_i
-		filter_details_1 = session[:filter_details_1]
-		filter_details_2 = session[:filter_details_2]
+	def self.getmydetails(user_id, session, page)
+		sort_by = session[:my_sort_by].to_i
+		filter_by = session[:my_filter_by].to_i
+		filter_details_1 = session[:my_filter_details_1]
+		filter_details_2 = session[:my_filter_details_2]
 
 		if filter_by == 0 || filter_details_1.to_i == -1
 			conditions = ["user_id = ?", user_id]

@@ -2,13 +2,26 @@ class MyFilter
 	attr_accessor :index
 	attr_accessor :text
 
+  SORT_OPTIONS = {"Year" => "0", "Artist" => "1", "Rating" => "2"}
+  MY_FILTER_OPTIONS = { "No Filter" =>  "0",
+                        "Year" =>       "1",
+                        "Artist" =>     "2", 
+                        "Rating" =>     "3",
+                        "Format" =>     "4",
+                        "Owned" =>      "5",
+                        "Heard" =>      "6" }
+
   def self.reset_session_filters(session)
-    session[:sort_by] = 0
-    session[:filter_by] = 0
-    session[:filter_details_1] = -1
-    session[:filter_details_2] = 0
+    session[:my_sort_by] = 0
+    session[:my_filter_by] = 0
+    session[:my_filter_details_1] = -1
+    session[:my_filter_details_2] = 0
     session[:other_user] = "No User"
+    session[:wanted_sort_by] = 0
     session[:wanted_type] = "owned"
+    session[:wanted_filter_by] = 0
+    session[:wanted_filter_details_1] = -1
+    session[:wanted_filter_details_2] = 0
   end
 
 	def self.getfilters(filter_key)

@@ -10,22 +10,14 @@
 <div class="filter_sort">
 Sort By:
   <select name="sort_by" id="my_sort_by_select" class="sort_by_select">
-    <option value="0" selected>Year</option>
-		<option value="1">Artist</option>
-    <option value="2">Rating</option>
+    <%= options_for_select(MyFilter::SORT_OPTIONS,session[:my_sort_by] ||= '0') %>
   </select>
 </div>
 
 <div class="filter_by">
 Filter By:
   <select name="filter_by" id="filter_by_select" onChange="do_js_populate_filters(this.value, 'my')" >
-    <option value="0" selected>No Filter</option>
-    <option value="1">Year</option>
-    <option value="2">Artist</option>
-    <option value="3">Rating</option>
-    <option value="4">Format</option>
-    <option value="5">Owned</option>
-    <option value="6">Heard</option>
+    <%= options_for_select(MyFilter::MY_FILTER_OPTIONS,session[:my_filter_by] ||= '0') %>
   </select>
 </div>
 
