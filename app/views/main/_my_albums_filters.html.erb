@@ -16,7 +16,7 @@ Sort By:
 
 <div class="filter_by">
 Filter By:
-  <select name="filter_by" id="filter_by_select" onChange="do_js_populate_filters(this.value, 'my')" >
+  <select name="filter_by" id="my_filter_by_select" class="filter_by_select" onChange="do_js_populate_filters(this.value, 'my')" >
     <%= options_for_select(MyFilter::MY_FILTER_OPTIONS,session[:my_filter_by] ||= '0') %>
   </select>
 </div>

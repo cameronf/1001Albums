@@ -1,6 +1,6 @@
 <div id="w_print_and_filter" class="print_and_filter">
 	<div id="print_wanted_text" class="print_wanted_text">
-		<a href="/ltrs/downloadable_list" target="_blank">Create Downloadable List</a>
+		<a href="/ltrs/downloadable_list?fb_id=<%=@user.fb_user_id%>&sort_by=0&wanted_type=owned&filter_by=0 " target="_blank" id="download_link">Create Downloadable List</a>
 	</div>
   <div id="w_show_filter_text" class="show_filter_text">
     <a href="javascript:void(0)" onClick="$('#w_show_filter_text').hide();$('#w_hide_filter_text').show();$('#w_show_filter_controls').show();do_js_set_div_height('wanted_albums_scroll');">Advanced Filters</a>
@@ -30,7 +30,7 @@ Want:
 
 <div class="filter_by">
 Filter By:
-  <select name="filter_by" id="w_filter_by_select" onChange="do_js_populate_filters(this.value, 'wanted')" >
+  <select name="filter_by" id="wanted_filter_by_select" class="filter_by_select" onChange="do_js_populate_filters(this.value, 'wanted')" >
     <option value="0" selected>No Filter</option>
     <option value="1">Year</option>
     <option value="2">Artist</option>
@@ -41,5 +41,6 @@ Filter By:
 </div>
 <div id="wanted_filter_go" class="filter_go">
 <input class="btn btn-mini btn-primary" type="button" value="Go" onClick="do_js_get_filtered_albums('wanted')"/>
+<input type="hidden" id="fb_id" value="<%=@user.fb_user_id%>"/>
 </div>
 </div>
