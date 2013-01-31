@@ -7,25 +7,29 @@
   </div>
 </div>
 <div id="show_filter_controls" style="display:none" class="show_filter_controls">
-<div class="filter_sort">
-Sort By:
-  <select name="sort_by" id="my_sort_by_select" class="sort_by_select">
-    <%= options_for_select(MyFilter::SORT_OPTIONS,session[:my_sort_by] ||= '0') %>
-  </select>
-</div>
+  <div class="top_filter">
+    <div class="filter_sort">
+      Sort By:
+      <select name="sort_by" id="my_sort_by_select" class="sort_by_select">
+        <%= options_for_select(MyFilter::SORT_OPTIONS,session[:my_sort_by] ||= '0') %>
+      </select>
+    </div>
+  </div>
 
-<div class="filter_by">
-Filter By:
-  <select name="filter_by" id="my_filter_by_select" class="filter_by_select" onChange="do_js_populate_filters(this.value, 'my')" >
-    <%= options_for_select(MyFilter::MY_FILTER_OPTIONS,session[:my_filter_by] ||= '0') %>
-  </select>
-</div>
+  <div class="bottom_filter">
+    <div class="filter_by">
+      Filter By:
+      <select name="filter_by" id="my_filter_by_select" class="filter_by_select" onChange="do_js_populate_filters(this.value, 'my')" >
+        <%= options_for_select(MyFilter::MY_FILTER_OPTIONS,session[:my_filter_by] ||= '0') %>
+      </select>
+    </div>
 
-<div id="my_filter_details" class="filter_details">
-</div>
+    <div id="my_filter_details" class="filter_details">
+    </div>
 
-<div class="filter_go" id="my_filter_go">
-<input class="btn btn-mini btn-primary" type="button" value="Go" onClick="do_js_get_filtered_albums('my')"/>
-</div>
+    <div class="filter_go" id="my_filter_go">
+      <input class="btn btn-mini btn-primary" type="button" value="Go" onClick="do_js_get_filtered_albums('my')"/>
+    </div>
+  </div>
 </div>
 <div class="clearfix after"></div>

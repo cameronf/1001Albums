@@ -1,4 +1,5 @@
-<% if @filter_by.to_i == 1 %>
+<% if @filter_by.to_i == 0 %>
+<% elsif @filter_by.to_i == 1 %>
 	<select name="filter_details_1" id=<%= "#{params[:div]}_filter_details_1_select"%> class="filter_details_year">
 		<% (1955..2007).each do |year| %>
 			<%= "<option value=#{year.to_s}>#{year.to_s}</option>".html_safe %>

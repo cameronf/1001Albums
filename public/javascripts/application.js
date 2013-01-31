@@ -109,14 +109,16 @@ function do_js_populate_filters(filter_by,album_div) {
 }
 
 function do_js_get_filtered_albums(album_div) {
-  var sort_by = '&sort_by='+$('#'+album_div+'_sort_by_select').val();
+  var sort_by = 'sort_by='+$('#'+album_div+'_sort_by_select').val();
 	var filter_by = '&filter_by='+$('#'+album_div+'_filter_by_select').val();
 	var filter_details_1 = '&filter_details_1='+$('#'+album_div+'_filter_details_1_select').val();
+/*
   var fb_id = document.getElementById('fb_id');
   if (fb_id) {
     var fb_user_id = '?fb_id='+fb_id.value;
   } else {
     var fb_user_id = '';}
+*/
   var wts = document.getElementById('wanted_type');
   if (wts) {
     var wanted_type = '&wanted_type='+wts.value;
@@ -128,13 +130,13 @@ function do_js_get_filtered_albums(album_div) {
   } else {
     var filter_details_2 = ''; }
   $.ajax({
-    url: '/ltrs/get_'+album_div+'_albums?page=1'+sort_by+wanted_type+filter_details_1+filter_details_2,
+    url: '/ltrs/get_'+album_div+'_albums?page=1&'+sort_by+wanted_type+filter_details_1+filter_details_2,
     beforeSend: function(xhr){do_js_start_load()},
     success: function(data, textStatus, jqXHR){
                       do_js_update_div_with_html(data,album_div+'_albums');
                       if(album_div == 'wanted') {
                         var dl = $('#download_link');
-                        dl.attr('href','/ltrs/downloadable_list'+fb_user_id+sort_by+wanted_type+filter_details_1+filter_details_2+filter_by)
+                        dl.attr('href','/ltrs/downloadable_list?'+sort_by+wanted_type+filter_details_1+filter_details_2+filter_by)
                         console.log(dl.attr('href'));
                       };
     },

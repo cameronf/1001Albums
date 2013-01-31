@@ -74,11 +74,27 @@ h3 {
 	}
 
 	.show_filter_controls {
-		position: relative;
-		height: 24px;
-		margin-top: 5px;
-		margin-bottom: 5px;
+    display: inline-block;
+    line-height: 30px;
 	}
+
+  .top_filter, .w_top_filter, .bottom_filter {
+    float: left;
+  }
+
+  @media screen and (max-width: 800px) {
+    .bottom_filter {
+      clear: left;
+    }
+    .top_filter {
+      clear: left;
+      margin-left: 50px;
+    }
+    .w_top_filter {
+      clear: left;
+      margin-left: 20px;
+    }
+  }
 
   select {
     height: 20px;
@@ -126,18 +142,21 @@ h3 {
 	}
 
 	.filter_sort {
-    margin-left: 30%;
     float: left;
-    margin-right: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
 	}
 
 	.filter_wanted {
-    margin-right: 20px;
     float: left;
+    margin-right: 5px;
+    margin-left: 5px;
 	}
 
 	.filter_by {
     float: left;
+    margin-right: 5px;
+    margin-left: 5px;
 	}
 
   #wanted_type {
@@ -149,12 +168,14 @@ h3 {
   }
 
 	.filter_details {
-    margin-left: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
     float: left;
 	}
 
 	.filter_go {
-    margin-left: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
     float: left;
 	}
 
