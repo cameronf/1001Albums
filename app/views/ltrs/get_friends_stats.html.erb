@@ -1,0 +1,7 @@
+<div id="friends_stats_scroll" class="scrolling_albums">
+	<% for stat in @all_stats %>
+    <div class="span3">
+		  <%= render(:partial => "stats_block", :locals => {:leader => stat,:fb_user_id => @user.id}) %>
+	  </div>
+  <% end %>
+</div>

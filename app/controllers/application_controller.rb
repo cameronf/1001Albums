@@ -32,12 +32,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-	def get_friends
-    fb_friends = @graph.get_connections("me", "friends")
-    friends_with_app = User.where(:fb_user_id => fb_friends.map { |obj| obj['id'] })
-		@fb_all = [@user] + friends_with_app
-	end
-
 	def global_filter
 		@DEBUG = false
 		response.headers['P3P'] = 'CP="CAO PSA OUR"'

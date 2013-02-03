@@ -206,6 +206,10 @@ h3 {
     padding-top: 2px;
   }
 
+  .span3 {
+    width: 205px;
+  }
+
 	.album_image {
 		position: absolute;
 		top: 4px;
@@ -412,33 +416,13 @@ h3 {
 	}
 
 	.leader_boards {
-		position: relative;
-		top: 0;
-		left: 55px;
-		width: 646px;
-		height: 950px;
 	}
 
-	.left_leaders {
-		position: absolute;
-		left: 0px;
-		top: 0;
-		width: 212px;
-	}
-
-	.center_leaders {
-		position: absolute;
-		left: 217px;
-		top: 0;
-		width: 212px;
-	}
-
-	.right_leaders {
-		position: absolute;
-		left: 434px;
-		top: 0;
-		width: 212px;
-	}
+  .leader_image {
+    width: 75px;
+    float: left;
+    margin-left: 10px;
+  }
 
 	.spacer {
 		position: relative;
@@ -447,44 +431,35 @@ h3 {
 	}
 
 	.leader_block {
-		position: relative;
-		left: 0px;
-		width: 210px;
-		height: 85px;
-		border: 1px solid #BDC7D8;
+    height: 115px;
+    border: 1px solid #BDC7D8;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
 	}
 
 	.leader_fbuser {
-		position: absolute;
-		left: 8px;
-		width: 122px;
-		height: 79px;
-		padding-top: 6px;
+		padding: 5px;
+    font-weight: bold;
+    text-align: center;
 	}
 
 	.leader_stats {
-		position: absolute;
-		left: 130px;
-		width: 80px;
-		top: 0;
-		height: 85px;
-		cursor: pointer;
+    float: left;
 	}
 	
 	.leader_labels {
-		position: absolute;
-		left: 0px;
-		width: 40px;
-		height: 79px;
-		padding-top: 6px;
+    margin-left: 20px;
+    line-height: 12pt;
+    margin-top: -3px;
+    float: left;
 	}
 	
 	.leader_numbers {
-		position: absolute;
-		left: 45px;
-		width: 30px;
-		height: 79px;
-		padding-top: 6px;
+    float: left;
+    line-height: 12pt;
+    margin-top: -3px;
+    margin-left: 10px;
 	}
 
 	.note_text {

@@ -1,0 +1,22 @@
+<div class="leader_block" onClick="do_ajax_stats_to_albums(<%=@user.id%>,<%=leader.fb_user_id%>);">
+  <div class="leader_fbuser">
+    <%= @graph.get_object(leader.fb_user_id) {|obj| obj['name'] } %>
+  </div>
+  <%= image_tag(@graph.get_picture(leader.fb_user_id, {:type => :square}), {:class => "leader_image"}) %>
+  <div class="leader_stats">
+    <div class="leader_labels">
+      Heard<br>
+      Owned<br>
+      Vinyl<br>
+      CD<br>
+      mp3<br>
+    </div>
+    <div class="leader_numbers">
+      <%= leader.heard %><br>
+      <%= leader.owned %><br>
+      <%= leader.vinyl %><br>
+      <%= leader.cd %><br>
+      <%= leader.mp3 %><br>
+    </div>
+  </div>
+</div>
