@@ -19,6 +19,12 @@ function do_js_focus_highlight_note(album_id) {
 }
 */
 
+function do_js_set_scroll_height() {
+  do_js_set_div_height('wanted_albums_scroll');
+  do_js_set_div_height('my_albums_scroll');
+  do_js_set_div_height('friends_stats_scroll');
+};
+
 function do_js_set_div_height(div_id) {
   if (document.getElementById(div_id)) { 
     var target = $('#'+div_id);
