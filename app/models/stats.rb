@@ -1,6 +1,7 @@
 class Stats < ActiveRecord::Base
 	attr_reader :fb_user_id, :heard, :owned, :vinyl, :cd, :mp3, :want_own, :want_hear
 
+=begin
 	def initialize(id_type, uid)
 		case id_type
 			when "User"
@@ -8,6 +9,8 @@ class Stats < ActiveRecord::Base
 			when "FBUser"
 				user = User.find_by_fb_user_id(uid)
 		end
+=end
+  def initialize(user)
 		@fb_user_id = user.fb_user_id
 		@heard = Detail.count(:conditions => ["user_id = ? AND heard_id = 1",user.id])
 		@owned = Detail.count(:conditions => ["user_id = ? AND owned_id = 2",user.id])

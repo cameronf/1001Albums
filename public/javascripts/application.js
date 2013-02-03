@@ -98,6 +98,18 @@ function do_js_get_wanted_albums(wanted_type, album_div) {
 	return false;
 }
 
+function do_js_get_friends_stats(target_div) {
+  $.ajax({
+    url: '/ltrs/get_friends_stats',
+    beforeSend: function(xhr){do_js_start_load()},
+    success: function(data, textStatus, jqXHR){
+                      do_js_update_div_with_html(data,target_div)},
+    complete: function(xhr){do_js_finish_load()}
+    });
+	return false;
+}
+
+
 function do_js_populate_filters(filter_by,album_div) {
   $.ajax({
     url: '/ltrs/populate_filters?filter_by='+filter_by+'&div='+album_div,

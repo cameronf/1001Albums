@@ -38,10 +38,10 @@ Loading <img class="pd_image" src="<%=$APP_ROOT%>images/progress.gif" />
   <li>
     <a href="#wanted" onClick="do_js_get_wanted_albums('owned','wanted_albums');" data-toggle="tab">Wanted List</a>
   </li>
-<!--
   <li>
-    <a href="#stats" data-toggle="tab">Friends Stats</a>
+    <a href="#stats" data-toggle="tab" onClick="do_js_get_friends_stats('friends_stats');">Friends Stats</a>
   </li>
+<!--
   <li>
     <a href="#othersalbums" data-toggle="tab">Others Albums</a>
   </li>
@@ -58,6 +58,9 @@ Loading <img class="pd_image" src="<%=$APP_ROOT%>images/progress.gif" />
   </div>
   <div class="tab-pane fade" id="wanted">
     <%= render :partial => "showwantedtab" %>
+  </div>
+  <div class="tab-pane fade" id="stats">
+    <%= render :partial => "showstatstab" %>
   </div>
 </div>
 

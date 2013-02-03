@@ -4,6 +4,7 @@ class MainController < ApplicationController
 	require ('select_friends.rb')
 
 	def index
+		User.logtime(@user.id)
     MyFilter.reset_session_filters(session)
 	end
 
@@ -13,15 +14,6 @@ class MainController < ApplicationController
 
 	def show
 		redirect_to ($FB_APP_ROOT)
-	end
-
-	def get_friends
-		begin
-			@fb_friends = @fb_user.friends_with_this_app
-		rescue
-		# 	redirect_to ($FB_APP_ROOT)
-		end
-		@fb_all = [@fb_user] + @fb_friends
 	end
 
 	def allusers
@@ -47,27 +39,16 @@ class MainController < ApplicationController
     end
 	end
 
+=begin
   def showmyalbumstab
 		User.logtime(@user.id)
     MyFilters::reset_session_filters(session)
-
-		@tab = "My Albums"
 
 		respond_to do |format|
 			format.html
 		 	format.xml { render :xml => @user.to_xml }
 		end
   end
-
-=begin
-  def iframemyalbumstab
-
-		respond_to do |format|
-			format.html
-		 	format.xml { render :xml => @details.to_xml }
-		end
-  end
-=end
 
 	def showwantedtab
     MyFilters::reset_session_filters(session)
@@ -75,15 +56,6 @@ class MainController < ApplicationController
 		respond_to do |format|
 			format.fbml
 		 	format.xml { render :xml => @user.to_xml }
-		end
-	end
-
-=begin
-  def iframewantedtab
-
-		respond_to do |format|
-			format.html
-		 	format.xml { render :xml => @details.to_xml }
 		end
 	end
 =end
@@ -95,22 +67,6 @@ class MainController < ApplicationController
 		respond_to do |format|
 			format.fbml
 			format.xml { render :xml => @fb_user.to_xml }
-		end
-	end
-
-	def showstatstab
-		@tab = "Stats"
-		@all_stats = Array.new
-		get_friends
-		for fb_user in @fb_all
-			@all_stats << Stats.new("FBUser",fb_user.id)
-		end
-
-		@threes = @all_stats.length/3
-
-		respond_to do |format|
-			format.fbml
-		 	format.xml { render :xml => @all_stats.to_xml }
 		end
 	end
 

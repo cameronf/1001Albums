@@ -32,7 +32,6 @@ class MyFilter
 		case filter_key.to_i
     when 0
       filters = []
-    end
 		# 1= Year - which is special cased - easier to just build it in the html directly
 		# Filter Album
 		when 2

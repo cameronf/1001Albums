@@ -199,6 +199,22 @@ class LtrsController < ApplicationController
 		end
 	end
 
+	def get_friends_stats
+		@all_stats = Array.new
+		get_friends
+		for fb_user in @fb_all
+			# @all_stats << Stats.new("FBUser",fb_user.id)
+			@all_stats << Stats.new(fb_user)
+		end
+
+		@threes = @all_stats.length/3
+
+		respond_to do |format|
+      format.html
+		 	format.xml { render :xml => @all_stats.to_xml }
+		end
+	end
+
 	def downloadable_list
 
     @details = Detail.getwanteddetails(@user.id,session,@cur_page,true)
