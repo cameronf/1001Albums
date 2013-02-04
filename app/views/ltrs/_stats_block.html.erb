@@ -1,8 +1,8 @@
-<div class="leader_block" onClick="do_ajax_stats_to_albums(<%=@user.id%>,<%=leader.fb_user_id%>);">
+<div class="leader_block" onClick="do_ajax_stats_to_albums(<%=@user.id%>,<%= fb_info['id'].to_i%>);">
   <div class="leader_fbuser">
-    <%= @graph.get_object(leader.fb_user_id) {|obj| obj['name'] } %>
+    <%= fb_info['name'] %>
   </div>
-  <%= image_tag(@graph.get_picture(leader.fb_user_id, {:type => :square}), {:class => "leader_image"}) %>
+  <%= image_tag(fb_info['image'], {:class => "leader_image"}) %>
   <div class="leader_stats">
     <div class="leader_labels">
       Heard<br>

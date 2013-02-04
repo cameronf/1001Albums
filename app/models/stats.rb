@@ -10,15 +10,16 @@ class Stats < ActiveRecord::Base
 				user = User.find_by_fb_user_id(uid)
 		end
 =end
-  def initialize(user)
-		@fb_user_id = user.fb_user_id
-		@heard = Detail.count(:conditions => ["user_id = ? AND heard_id = 1",user.id])
-		@owned = Detail.count(:conditions => ["user_id = ? AND owned_id = 2",user.id])
-		@vinyl = Detail.count(:conditions => ["user_id = ? AND format_id = 1",user.id])
-		@cd = Detail.count(:conditions => ["user_id = ? AND format_id = 2",user.id])
-		@mp3 = Detail.count(:conditions => ["user_id = ? AND format_id = 3",user.id])
-		@want_own = Detail.count(:conditions => ["user_id = ? AND owned_id = 0",user.id])
-		@want_hear = Detail.count(:conditions => ["user_id = ? AND heard_id = 0",user.id])
+  def initialize(fb_user)
+    @fb_user_id = fb_user['id']
+    user_id = fb_user['user_id'].to_i
+		@heard = Detail.count(:conditions => ["user_id = ? AND heard_id = 1",user_id])
+		@owned = Detail.count(:conditions => ["user_id = ? AND owned_id = 2",user_id])
+		@vinyl = Detail.count(:conditions => ["user_id = ? AND format_id = 1",user_id])
+		@cd = Detail.count(:conditions => ["user_id = ? AND format_id = 2",user_id])
+		@mp3 = Detail.count(:conditions => ["user_id = ? AND format_id = 3",user_id])
+		@want_own = Detail.count(:conditions => ["user_id = ? AND owned_id = 0",user_id])
+		@want_hear = Detail.count(:conditions => ["user_id = ? AND heard_id = 0",user_id])
 	end
 
 	def self.leaders(l_type, l_list=nil)

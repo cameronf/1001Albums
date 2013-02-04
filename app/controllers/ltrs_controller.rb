@@ -202,13 +202,11 @@ class LtrsController < ApplicationController
 
 	def get_friends_stats
 		@all_stats = Array.new
-		@fb_all = [@user] + FBUtils.get_friends(@graph)
-		for fb_user in @fb_all
+		@fb_all = FBUtils.get_friends(@graph)
+		@fb_all.each do |fb_user|
 			# @all_stats << Stats.new("FBUser",fb_user.id)
 			@all_stats << Stats.new(fb_user)
 		end
-
-		@threes = @all_stats.length/3
 
 		respond_to do |format|
       format.html
